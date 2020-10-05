@@ -27,3 +27,4 @@ C:\GroupProject\mobeyeapplication\MobEye\MobEye\MobEye\obj\Debug\netstandard2.0\
 C:\GroupProject\mobeyeapplication\MobEye\MobEye\MobEye\obj\Debug\netstandard2.0\ref\MobEye.dll
 C:\GroupProject\mobeyeapplication\MobEye\MobEye\MobEye\obj\Debug\netstandard2.0\MobEye.pdb
 C:\GroupProject\mobeyeapplication\MobEye\MobEye\MobEye\obj\Debug\netstandard2.0\Views\LoginPage.xaml.g.cs
+C:\GroupProject\mobeyeapplication\MobEye\MobEye\MobEye\obj\Debug\netstandard2.0\Views\VerificationPage.xaml.g.cs

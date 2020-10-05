@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobEye.Views.VerificationPage">
+    <StackLayout>
+        <Label Text="Verification" />
+        <Label Text="Enter your SMS code" />
+        <Label Text="Check your phone and input the code" />
+        <Entry x:Name="Entry_Code" Placeholder="Username" />
+
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Resend code"
+                              TextColor="Blue"
+                              TextDecorations="Underline">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding TapCommand}"
+                                                      CommandParameter="https://fontys.nl//" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+    </StackLayout>
+</ContentPage>
