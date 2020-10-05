@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UMNTRneQBhs4JzFD2sROGRNhaFMN3+AkloGxg/FEvE319A2iWAebak+xLLQi9YDQt5DcuCef//EHUHHypyHLQg==",
+  "dgSpecHash": "6dv2HisbFE9BRPuQ70QwSNt43eKCj0H5u1efKG5F0eqsyBfVycajxbSszoHtwMAosfkdksxZe1DVofZhTQl4+g==",
   "success": true,
-  "projectFilePath": "C:\\mobeyeapplication\\MobEye\\MobEye\\MobEye.Android\\MobEye.Android.csproj",
+  "projectFilePath": "C:\\GroupProject\\mobeyeapplication\\MobEye\\MobEye\\MobEye.Android\\MobEye.Android.csproj",
   "expectedPackageFiles": [
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.common\\1.1.1.3\\xamarin.android.arch.core.common.1.1.1.3.nupkg.sha512",
     "C:\\Microsoft\\Xamarin\\NuGet\\xamarin.android.arch.core.runtime\\1.1.1.3\\xamarin.android.arch.core.runtime.1.1.1.3.nupkg.sha512",

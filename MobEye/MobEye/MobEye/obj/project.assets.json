@@ -628,23 +628,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gebruiker\\.nuget\\packages\\": {},
+    "C:\\Users\\jnava\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\mobeyeapplication\\MobEye\\MobEye\\MobEye\\MobEye.csproj",
+      "projectUniqueName": "C:\\GroupProject\\mobeyeapplication\\MobEye\\MobEye\\MobEye\\MobEye.csproj",
       "projectName": "MobEye",
-      "projectPath": "C:\\mobeyeapplication\\MobEye\\MobEye\\MobEye\\MobEye.csproj",
-      "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-      "outputPath": "C:\\mobeyeapplication\\MobEye\\MobEye\\MobEye\\obj\\",
+      "projectPath": "C:\\GroupProject\\mobeyeapplication\\MobEye\\MobEye\\MobEye\\MobEye.csproj",
+      "packagesPath": "C:\\Users\\jnava\\.nuget\\packages\\",
+      "outputPath": "C:\\GroupProject\\mobeyeapplication\\MobEye\\MobEye\\MobEye\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jnava\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
