@@ -10,11 +10,11 @@ namespace RestfulAPI.Models
     {
         [Key]
         public int ID { get; set; }
-        public string deviceName { get; private set; }
-        public string location { get; private set; }
-        public string alarmText { get; private set; }
+        public string deviceName { get; set; }
+        public string location { get;  set; }
+        public string alarmText { get; set; }
         
-        public string accountId { get; private set; }
+        public string accountId { get; set; }
 
         public Alarm(string deviceName, string location, string alarmText, string accountId)
         {

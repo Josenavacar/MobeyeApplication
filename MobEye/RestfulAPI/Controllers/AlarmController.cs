@@ -30,11 +30,13 @@ namespace RestfulAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Alarm>> PostAlarm(Alarm alarm)
         {
+
+
             alarmContext.Alarms.Add(alarm);
 
             await alarmContext.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetAlarms), alarm);
+            return CreatedAtAction(nameof(GetAlarms),new { id = alarm.ID}, alarm);
         }
     }
 }
