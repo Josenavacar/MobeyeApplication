@@ -57,8 +57,6 @@
                 <Setter Property="TextColor" Value="#404040" />
                 <Setter Property="FontSize" Value="21"/>
             </Style>
-
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

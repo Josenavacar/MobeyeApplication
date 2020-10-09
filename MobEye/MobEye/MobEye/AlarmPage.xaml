@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MobEye.Controls;assembly=MobEye"
+             x:Class="MobEye.AlarmPage">
+    <ContentPage.Content>
+        <StackLayout Padding="30" 
+                     BackgroundColor="#f7f7f7">
+            <StackLayout BackgroundColor="#d7e0b6">
+                <Label Style="{StaticResource labelStyle}"
+                Text="High temperature alert!"
+                   FontSize="32"
+                   TextColor="Red"
+                    HorizontalOptions="CenterAndExpand"
+                    Margin="0,15,0,15"/>
+                <Label Style="{StaticResource labelStyle}"
+                Text="Temperature: 45°C"
+                   FontSize="21"
+                   TextColor="Red"
+                HorizontalOptions="CenterAndExpand" />
+                <Label Style="{StaticResource labelStyle}"
+                Text="Device name: CM2400H, Location: Frankfurt"
+                   FontSize="18"
+                   TextColor="Red"
+                   HorizontalOptions="CenterAndExpand"
+                   Margin="0,0,0,35"/>
+
+                <Button Style="{StaticResource buttonStyle}"
+                Text="Confirm alarm"
+                HorizontalOptions="Center"
+                Clicked="ConfirmAlarm"
+                WidthRequest="150"
+                BackgroundColor="#99CC00"/>
+                <Button Style="{StaticResource buttonStyle}"
+                Text="Skip alarm"
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                Clicked="SkipAlarm"
+                Margin="0,0,0,25"
+                BackgroundColor="#72ab72"/>
+            </StackLayout>
+            
+            
+            <Label Text="John Doe"
+                   FontSize="Medium"/>
+            <local:CustomEntry 
+                Placeholder="Write a message..."
+                WidthRequest="400"/>
+            <Button Style="{StaticResource buttonStyle}"
+                    Text="Send message"
+                HorizontalOptions="Center"
+                Clicked="SendMessage"
+                WidthRequest="150"
+                BackgroundColor="#99CC00"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

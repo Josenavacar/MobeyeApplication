@@ -15,7 +15,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRendererIOS))]
 namespace MobEye.iOS
 {
-    public class CustomEntryRendererIOS :EntryRenderer
+    public class CustomEntryRendererIOS : EntryRenderer
     {
         public CustomEntry ElementV2 => Element as CustomEntry;
         public UITextFieldPadding ControlV2 => Control as UITextFieldPadding;

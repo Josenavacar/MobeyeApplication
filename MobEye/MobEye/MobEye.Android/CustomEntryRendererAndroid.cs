@@ -19,7 +19,7 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(CustomEntry), typeof(CustomEntryRendererAndroid))]
 namespace MobEye.Droid
 {
-    public class CustomEntryRendererAndroid: EntryRenderer
+    public class CustomEntryRendererAndroid : EntryRenderer
     {
         public CustomEntryRendererAndroid(Context context) : base(context)
         {
