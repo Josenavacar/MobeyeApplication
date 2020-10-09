@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MobEye",
+    "\\MobEye\\MobEye",
+    "\\MobEye\\MobEye\\MobEye",
+    "\\MobEye\\MobEye\\MobEye.Android",
+    "\\MobEye\\MobEye\\MobEye.iOS"
   ],
+  "SelectedNode": "\\MobEye\\MobEye.sln",
   "PreviewInSolutionExplorer": false
 }
