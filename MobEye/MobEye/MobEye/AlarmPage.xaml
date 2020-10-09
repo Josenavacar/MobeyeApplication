@@ -22,6 +22,20 @@
             <Button Text="Skip alarm"
                 HorizontalOptions="Center"
                 Clicked="SkipAlarm" />
+            <Label Text="John Doe"
+                   FontSize="Medium"/>
+            <Editor HeightRequest="50" WidthRequest="50" HorizontalOptions="FillAndExpand">
+                <Editor.Keyboard>
+                    <Keyboard x:FactoryMethod="Create">
+                        <x:Arguments>
+                            <KeyboardFlags>Suggestions</KeyboardFlags>
+                        </x:Arguments>
+                    </Keyboard>
+                </Editor.Keyboard>
+            </Editor>
+            <Button Text="Send message"
+                HorizontalOptions="Center"
+                Clicked="SendMessage" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -24,5 +24,9 @@ namespace MobEye
         {
             (sender as Button).Text = "Alarm skipped";
         }
+        void SendMessage (object sender, EventArgs e)
+        {
+            (sender as Button).Text = "Message sent";
+        }
     }
 }
