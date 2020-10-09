@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MobEye.Models;
+using System.Windows.Input;
+using Xamarin.Essentials;
 
 namespace MobEye.Views
 {
