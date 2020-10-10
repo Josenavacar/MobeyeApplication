@@ -7,6 +7,15 @@
         <StackLayout Padding="30" 
                      BackgroundColor="#f7f7f7">
             <StackLayout BackgroundColor="#d7e0b6">
+                <!--<Label Text="Get API request"/>-->
+                <ListView x:Name="Message_List">
+                    <!--<ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding deviceName}" Detail="{Binding location}"></TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>-->
+                </ListView>
+                
                 <Label Style="{StaticResource labelStyle}"
                 Text="High temperature alert!"
                    FontSize="32"
@@ -52,6 +61,7 @@
                 Clicked="SendMessage"
                 WidthRequest="150"
                 BackgroundColor="#99CC00"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
