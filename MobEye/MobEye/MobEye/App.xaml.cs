@@ -11,23 +11,12 @@ namespace MobEye
     {
         public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
 
-        // change bool value depending on which page you want to access (alarm or no alarm)
-        bool alarmActive = true;
-
         public App()
         {
             InitializeComponent();
             BindingContext = this;
 
-            if (alarmActive)
-            {
-                MainPage = new AlarmPage();
-            }
-            else
-            {
-                MainPage = new LoginPage();
-                //MainPage = new MainPage();
-            }
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

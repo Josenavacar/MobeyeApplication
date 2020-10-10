@@ -20,7 +20,7 @@ namespace MobEye.Views
             InitializeComponent();
         }
 
-        void SignInProcedure(object sender, EventArgs e)
+        public void SignInProcedure(object sender, EventArgs e)
         {
             User user = new User(Entry_Username.Text, Entry_Password.Text);
             if (user.CheckInformation())
@@ -32,6 +32,11 @@ namespace MobEye.Views
             {
                 DisplayAlert("Login", "Login Not Correct, empty username or password", "Oke");
             }
+        }
+
+        private async void BypassLoginButton(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AlarmPage());
         }
     }
 }

@@ -37,8 +37,18 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Label HorizontalOptions="Center"
-       VerticalOptions="CenterAndExpand">
+        <Button Style="{StaticResource buttonStyle}" Text="Bypass Login" Clicked="BypassLoginButton">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                    <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                    <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
             <Label.FormattedText>
                 <FormattedString>
                     <Span Text="Forgot password?"
