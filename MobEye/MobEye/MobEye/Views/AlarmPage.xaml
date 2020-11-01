@@ -4,18 +4,25 @@
              xmlns:local="clr-namespace:MobEye.Controls;assembly=MobEye"
              x:Class="MobEye.AlarmPage">
     <ContentPage.Content>
-        <StackLayout Padding="30" 
-                     BackgroundColor="#f7f7f7">
+        <StackLayout Padding="30" BackgroundColor="#f7f7f7">
+            <!--trying to get api data here-->
+                <Label Text="What" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Label x:Name="deviceName" Text="" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Label x:Name="location" Text="" TextColor="Black" FontSize="13" HorizontalOptions="Center" />
+                <Label x:Name="alarmText" Text="" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Label x:Name="accountId" Text="" TextColor="Black" FontSize="13" HorizontalOptions="Center" />
+            <!--trying to get api data here-->
             <StackLayout BackgroundColor="#d7e0b6">
-                <!--<Label Text="Get API request"/>-->
-                <ListView x:Name="Message_List">
-                    <!--<ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding deviceName}" Detail="{Binding location}"></TextCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>-->
-                </ListView>
-                
+                <!--trying to get api data here-->
+                    <Label Text="Get API request"/>
+                    <ListView x:Name="Message_List">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding deviceName}" Detail="{Binding location}"></TextCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                <!--trying to get api data here-->
                 <Label Style="{StaticResource labelStyle}"
                 Text="High temperature alert!"
                    FontSize="32"
