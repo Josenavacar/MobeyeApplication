@@ -23,10 +23,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\LoginPage.xaml">
+    <Compile Update="Views\LoginPageWithCredentialsWithCredentials.xaml.cs">
+      <DependentUpon>LoginPageWithCredentialsWithCredentials.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LoginPageWithCredentialsWithCode.xaml.cs">
+      <DependentUpon>LoginPageWithCredentialsWithCode.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Views\LoginPageWithCredentialsWithCredentials.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\VerificationPage.xaml">
+    <EmbeddedResource Update="Views\LoginPageWithCredentialsWithCode.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginWithCode.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LoginWithMobeyeAccount.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\StartPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

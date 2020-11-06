@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobEye.Views.StartPage"
+             Title="Welcome to Mobeye">
+
+    <ContentPage.Content>
+        <StackLayout Padding="60"
+                 BackgroundColor="#f7f7f7">
+
+            <Image Source="mobeyelogo.png"
+               HeightRequest="220"
+               WidthRequest="220"
+                    Margin="0,0,0,30"/>
+
+            <Button x:Name="Btn_LoginMobeyeAccount" 
+                    Clicked="LoginMobeye"
+                Style="{StaticResource buttonStyle}" 
+                Text="I have an account">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                        <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                        <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+            <Button x:Name="Btn_LoginSMSCode" 
+                    Clicked="LoginCode"
+                Style="{StaticResource buttonStyle}" 
+                Text="Login with SMS code">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                        <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                        <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

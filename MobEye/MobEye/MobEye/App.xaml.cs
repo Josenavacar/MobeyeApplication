@@ -16,7 +16,7 @@ namespace MobEye
             InitializeComponent();
             BindingContext = this;
 
-            MainPage = new NavigationPage(new LoginPage());
+            MainPage = new NavigationPage(new StartPage());
         }
 
         protected override void OnStart()
