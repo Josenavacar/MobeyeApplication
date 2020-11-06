@@ -33,11 +33,6 @@ namespace MobEye
             (sender as Button).Text = "Alarm skipped";
         }
 
-        public void SendMessage (object sender, EventArgs e)
-        {
-            (sender as Button).Text = "Message sent";
-        }
-
         protected override async void OnAppearing()
         {
             //var content = await httpClient.GetStringAsync(url);
