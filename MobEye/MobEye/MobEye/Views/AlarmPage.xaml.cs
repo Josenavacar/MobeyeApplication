@@ -16,7 +16,7 @@ namespace MobEye
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AlarmPage : ContentPage
     {
-        private const String url = "https://192.168.1.59:45459/api/messages/";
+        private const String url = "https://EnterConveyorURLHere/api/messages/";
         private HttpClient httpClient;
         private HttpClientHandler clientHandler;
         private ObservableCollection<AlarmMessage> alarmMessages;
