@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobEye.Views.DoorPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="Lbl_Remote_Access" 
+               FontSize="50"
+               Text="Remote Access" 
+               HorizontalTextAlignment="Center"
+               Padding="0,125,0,40"/>
+            <Label x:Name="Lbl_Door_ID" 
+               FontSize="30"
+               Text="Door With ID:" 
+               HorizontalTextAlignment="Center"
+               Padding="0,10,0,5"/>
+            <Picker x:Name="Door_Pick"
+                Title="Select a Door">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>1111</x:String>
+                        <x:String>2222</x:String>
+                        <x:String>3333</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Label x:Name="Lbl_Status" 
+               FontSize="15"
+               Text="Status:Closed" 
+               HorizontalTextAlignment="Center"
+               Padding="0,10,0,5"/>
+            <Button x:Name="Btn_Open_Door" 
+                Style="{StaticResource buttonStyle}"  
+                Text="Open Door"
+                Clicked="OpenDoor">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                        <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                        <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
