@@ -9,14 +9,16 @@ using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using MobEye.Models;
+using MobEye.Controls;
 
 namespace MobEye
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AlarmPage : ContentPage
     {
-        private const String url = "https://localhost:44349/api/Alarm";
-        private HttpClient httpClient = new HttpClient();
+        private const String url = "https://192.168.1.59:45455/api/messages/";
+        private HttpClient httpClient;
+        private HttpClientHandler clientHandler;
         private ObservableCollection<AlarmMessage> alarmMessages;
 
         public AlarmPage()
@@ -35,14 +37,19 @@ namespace MobEye
 
         protected override async void OnAppearing()
         {
-            //var content = await httpClient.GetStringAsync(url);
-            //var alarmMessage = JsonConvert.DeserializeObject<List<AlarmMessage>>(content);
+            clientHandler = new HttpClientHandler();
+            clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            httpClient = new HttpClient(clientHandler);
 
-            //alarmMessages = new ObservableCollection<AlarmMessage>(alarmMessage);
+            var content = await httpClient.GetStringAsync(url);
+            var newalarmMessage = JsonConvert.DeserializeObject<List<AlarmMessage>>(content);
+            alarmMessages = new ObservableCollection<AlarmMessage>(newalarmMessage);
+            Message_List.ItemsSource = alarmMessages;
 
-            //Message_List.ItemsSource = alarmMessages;
-
-            //base.OnAppearing();
+            base.OnAppearing();
         }
+
+        public ObservableCollection<AlarmMessage> Messages { get { return alarmMessages; } }
+
     }
 }

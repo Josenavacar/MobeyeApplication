@@ -9,14 +9,35 @@
        Padding="10"
        Margin="30">
         <StackLayout>
-            <!--<Label Text="Get API request"/>-->
-            <!--<ListView x:Name="Message_List">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding deviceName}" Detail="{Binding location}"></TextCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
+            <!--TO DISPLAY ALARM-->
+            <!--<ListView HasUnevenRows="False" x:Name="Message_List" ItemsSource="{Binding Messages}">
+                <ListView.Header>
+                    <StackLayout Spacing="30" Orientation="Horizontal" VerticalOptions="Start">
+                        <Label Text="Device Name"/>
+                        <Label Text="Location"/>
+                        <Label Text="Text"/>
+                        <Label Text="Account ID"/>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="2" RowSpacing="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding deviceName}" />
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding location}" />
+                                <Label Grid.Column="2" Grid.Row="0" Text="{Binding alarmText}" />
+                                <Label Grid.Column="3" Grid.Row="0" Text="{Binding accountId}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
 
             <Label Style="{StaticResource alarmLabel}"
                 Text="High temperature alert!"
@@ -25,7 +46,7 @@
             <BoxView Color="#d7e0b6"
              HeightRequest="3"
              HorizontalOptions="Fill"/>
-            
+
             <Label Style="{StaticResource alarmLabel}"
                 Text="Temperature: 45°C"/>
 
@@ -64,6 +85,4 @@
                 BackgroundColor="Gray"/>
         </StackLayout>
     </Frame>
-
-    <!--Messaging functionality removed at the moment-->
 </ContentPage>

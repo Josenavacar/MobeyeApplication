@@ -29,6 +29,7 @@ namespace RestfulAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AlarmContext>(option => option.UseInMemoryDatabase("AlarmList"));
+            services.AddDbContext<UserContext>(option => option.UseInMemoryDatabase("UserList"));
             services.AddControllers();
         }
 

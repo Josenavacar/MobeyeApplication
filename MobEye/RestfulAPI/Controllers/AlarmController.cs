@@ -10,7 +10,7 @@ using RestfulAPI.Models;
 
 namespace RestfulAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/messages/")]
     [ApiController]
     public class AlarmController : ControllerBase
     {
@@ -21,21 +21,19 @@ namespace RestfulAPI.Controllers
             this.alarmContext = alarmContext;
         }
 
-        [HttpGet]
+        //https://localhost:44349/api/messages/
+        [HttpGet] 
         public async Task<ActionResult<IEnumerable<Alarm>>> GetAlarms()
         {
             return await alarmContext.Alarms.ToListAsync();
         }
 
+        //https://localhost:44349/api/messages/
         [HttpPost]
         public async Task<ActionResult<Alarm>> PostAlarm(Alarm alarm)
         {
-
-
             alarmContext.Alarms.Add(alarm);
-
             await alarmContext.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetAlarms),new { id = alarm.ID}, alarm);
         }
     }
