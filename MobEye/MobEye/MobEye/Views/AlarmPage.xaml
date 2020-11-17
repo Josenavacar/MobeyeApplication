@@ -10,7 +10,7 @@
        Margin="30">
         <StackLayout>
             <!--TO DISPLAY ALARM-->
-            <!--<ListView HasUnevenRows="False" x:Name="Message_List" ItemsSource="{Binding Messages}">
+            <ListView HasUnevenRows="False" x:Name="Message_List" ItemsSource="{Binding Messages}">
                 <ListView.Header>
                     <StackLayout Spacing="30" Orientation="Horizontal" VerticalOptions="Start">
                         <Label Text="Device Name"/>
@@ -37,7 +37,7 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>-->
+            </ListView>
 
             <Label Style="{StaticResource alarmLabel}"
                 Text="High temperature alert!"
