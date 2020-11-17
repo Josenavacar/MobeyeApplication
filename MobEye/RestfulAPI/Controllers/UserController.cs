@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -49,6 +50,23 @@ namespace RestfulAPI.Controllers
             userContext.Users.Add(user);
             await userContext.SaveChangesAsync();
             return CreatedAtAction(nameof(GetUsers), new { id = user.ID }, user);
+        }
+
+        //https://localhost:44349/api/users/login
+        [HttpPost("login")]
+        public IEnumerable LoginUser([FromBody] User user)
+        {
+            var users = userContext.Users.ToList();
+
+            foreach (User u in users)
+            {
+                if ((user.username == u.username) && (user.password == u.password))
+                {
+                    return "success";
+                }
+            }
+
+            return null;
         }
     }
 }

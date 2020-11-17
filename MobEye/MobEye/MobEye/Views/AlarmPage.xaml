@@ -2,86 +2,87 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MobEye.Controls;assembly=MobEye"
-             x:Class="MobEye.AlarmPage">
-    <ContentPage.Content>
-        <StackLayout Padding="10" BackgroundColor="#f7f7f7">
-            <StackLayout BackgroundColor="#d7e0b6">
-                <Label Style="{StaticResource labelStyle}"
+             x:Class="MobEye.AlarmPage"
+             Title="Active alarm">
+
+    <Frame BorderColor="#d7e0b6"
+       Padding="10"
+       Margin="30">
+        <StackLayout>
+            <!--TO DISPLAY ALARM-->
+            <ListView HasUnevenRows="False" x:Name="Message_List" ItemsSource="{Binding Messages}">
+                <ListView.Header>
+                    <StackLayout Spacing="30" Orientation="Horizontal" VerticalOptions="Start">
+                        <Label Text="Device Name"/>
+                        <Label Text="Location"/>
+                        <Label Text="Text"/>
+                        <Label Text="Account ID"/>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="2" RowSpacing="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Grid.Row="0" Text="{Binding deviceName}" />
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding location}" />
+                                <Label Grid.Column="2" Grid.Row="0" Text="{Binding alarmText}" />
+                                <Label Grid.Column="3" Grid.Row="0" Text="{Binding accountId}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label Style="{StaticResource alarmLabel}"
                 Text="High temperature alert!"
-                   FontSize="20"
-                   TextColor="Red"
-                    HorizontalOptions="CenterAndExpand"
-                    Margin="0,15,0,15"/>
+                FontSize="30"/>
 
-                <ListView HasUnevenRows="False" x:Name="Message_List" ItemsSource="{Binding Messages}">
-                    <ListView.Header>
-                        <StackLayout Spacing="30" Orientation="Horizontal" VerticalOptions="Start">
-                            <Label Text="Device Name"/>
-                            <Label Text="Location"/>
-                            <Label Text="Text"/>
-                            <Label Text="Account ID"/>
-                        </StackLayout>
-                    </ListView.Header>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid ColumnSpacing="2" RowSpacing="2">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Label Grid.Column="0" Grid.Row="0" Text="{Binding deviceName}" />
-                                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding location}" />
-                                    <Label Grid.Column="2" Grid.Row="0" Text="{Binding alarmText}" />
-                                    <Label Grid.Column="3" Grid.Row="0" Text="{Binding accountId}"/>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                
-                <!--<Label Style="{StaticResource labelStyle}"
-                Text="Temperature: 45°C"
-                   FontSize="21"
-                   TextColor="Red"
-                HorizontalOptions="CenterAndExpand" />
-                <Label Style="{StaticResource labelStyle}"
-                Text="Device name: CM2400H, Location: Frankfurt"
-                   FontSize="18"
-                   TextColor="Red"
-                   HorizontalOptions="CenterAndExpand"
-                   Margin="0,0,0,35"/>-->
+            <BoxView Color="#d7e0b6"
+             HeightRequest="3"
+             HorizontalOptions="Fill"/>
 
-                <Button Style="{StaticResource buttonStyle}"
-                Text="Confirm alarm"
-                HorizontalOptions="Center"
-                Clicked="ConfirmAlarm"
-                WidthRequest="150"
-                BackgroundColor="#99CC00"/>
-                <Button Style="{StaticResource buttonStyle}"
-                Text="Skip alarm"
-                HorizontalOptions="Center"
-                WidthRequest="150"
-                Clicked="SkipAlarm"
-                Margin="0,0,0,25"
-                BackgroundColor="#72ab72"/>
-            </StackLayout>
-            
-            
-            <Label Text="John Doe"
-                   FontSize="Medium"/>
-            <local:CustomEntry 
-                Placeholder="Write a message..."
-                WidthRequest="400"/>
+            <Label Style="{StaticResource alarmLabel}"
+                Text="Temperature: 45°C"/>
+
+            <BoxView Color="#d7e0b6"
+             HeightRequest="3"
+             HorizontalOptions="Fill"/>
+
+            <Label Style="{StaticResource alarmLabel}"
+                Text="Device name: CM2400H"/>
+
+            <BoxView Color="#d7e0b6"
+             HeightRequest="3"
+             HorizontalOptions="Fill"/>
+
+            <Label Style="{StaticResource alarmLabel}"
+                Text="Location: Frankfurt"
+                 Margin="0,0,0,35"/>
+
             <Button Style="{StaticResource buttonStyle}"
-                    Text="Send message"
-                HorizontalOptions="Center"
-                Clicked="SendMessage"
-                WidthRequest="150"
-                BackgroundColor="#99CC00"/>
-
+                Text="Confirm alarm"
+                Clicked="ConfirmAlarm"
+                BackgroundColor="#99CC00">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                        <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                        <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button Style="{StaticResource buttonStyle}"
+                Text="Skip alarm"
+                Clicked="SkipAlarm"
+                BackgroundColor="Gray"/>
         </StackLayout>
-    </ContentPage.Content>
+    </Frame>
 </ContentPage>
