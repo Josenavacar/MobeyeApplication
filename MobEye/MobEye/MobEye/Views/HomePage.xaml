@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MobEye.Views.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="Lbl_Welcome_Message" 
+               FontSize="50"
+               Text="Welcome User" 
+               HorizontalTextAlignment="Center"
+               Padding="0,125,0,10"/>
+            <Label x:Name="Lbl_Device_Info" 
+               FontSize="30"
+               Text="All Your Devices Are Ok!" 
+               HorizontalTextAlignment="Center"
+               Padding="0,5,0,10"/>
+            <Label x:Name="Lbl_Alarm_Info" 
+               FontSize="15"
+               Text="You will receive an alarm if there is an issue" 
+               HorizontalTextAlignment="Center"
+               Padding="0,5,0,50"/>
+            <Button x:Name="Btn_Portal" 
+                Style="{StaticResource buttonStyle}"  
+                Text="Go To Portal"
+                Clicked="OpenPortal">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                        <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                        <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="Btn_Remote_Control" 
+                Style="{StaticResource buttonStyle}"  
+                Text="Remote Control"
+                Clicked="RemoteControlPage">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                        <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                        <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
