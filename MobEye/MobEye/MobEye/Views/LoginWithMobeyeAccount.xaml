@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MobEye.Controls;assembly=MobEye"
+             xmlns:resource="clr-namespace:MobEye.Resources"
              x:Class="MobEye.Views.LoginWithMobeyeAccount"
-             Title="Login with your Mobeye account">
+             Title="{x:Static resource:AppResources.LoginMobeyeTitle}">
     <StackLayout Padding="60"
                  BackgroundColor="#f7f7f7">
 
@@ -12,16 +13,16 @@
                WidthRequest="170"/>
 
         <local:CustomEntry x:Name="Entry_Username" 
-                           Placeholder="Username" />
+                           Placeholder="{x:Static resource:AppResources.UsernamePlaceholder}" />
 
         <local:CustomEntry x:Name="Entry_Password" 
-                           Placeholder="Password"
+                           Placeholder="{x:Static resource:AppResources.PasswordPlaceholder}"
                            IsPassword="true"
                            Margin="0,0,0,20"/>
 
         <Button x:Name="Btn_Signin" 
                 Style="{StaticResource buttonStyle}"  
-                Text="Login"
+                Text="{x:Static resource:AppResources.LoginButton}"
                 Clicked="SignIn">
             <Button.Background>
                 <LinearGradientBrush StartPoint="0,0"
@@ -37,7 +38,7 @@
         <Label HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Forgot password?"
+                    <Span Text="{x:Static resource:AppResources.ForgotPasswordText}"
                           TextDecorations="None"
                           FontSize="18">
                         <Span.GestureRecognizers>
