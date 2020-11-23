@@ -20,9 +20,9 @@ namespace RestfulAPI.Models.Tests
         public void ConstructorTest()
         {
             Alarm alarm = new Alarm("alarm1", "Eindhoven", "Temperature is too high", "123");
-            Assert.AreEqual(alarm.deviceName, "alarm1");
-            Assert.AreEqual(alarm.location, "Eindhoven");
-            Assert.AreEqual(alarm.alarmText, "Temperature is too high");
+            Assert.AreEqual(alarm.DeviceName, "alarm1");
+            Assert.AreEqual(alarm.Location, "Eindhoven");
+            Assert.AreEqual(alarm.AlarmText, "Temperature is too high");
             Assert.AreEqual(alarm.accountId, "123");
         }
 
@@ -30,24 +30,24 @@ namespace RestfulAPI.Models.Tests
         public void SetDeviceNameTest()
         {
             Alarm alarm = new Alarm();
-            alarm.deviceName = "alarm1";
-            Assert.AreEqual(alarm.deviceName, "alarm1");
+            alarm.DeviceName = "alarm1";
+            Assert.AreEqual(alarm.DeviceName, "alarm1");
         }
 
         [TestMethod()]
         public void SetLocationTest()
         {
             Alarm alarm = new Alarm();
-            alarm.location = "Eindhoven";
-            Assert.AreEqual(alarm.location, "Eindhoven");
+            alarm.Location = "Eindhoven";
+            Assert.AreEqual(alarm.Location, "Eindhoven");
         }
 
         [TestMethod()]
         public void SetAlarmTextTest()
         {
             Alarm alarm = new Alarm();
-            alarm.alarmText = "Temperature is too high";
-            Assert.AreEqual(alarm.alarmText, "Temperature is too high");
+            alarm.AlarmText = "Temperature is too high";
+            Assert.AreEqual(alarm.AlarmText, "Temperature is too high");
         }
 
         [TestMethod()]

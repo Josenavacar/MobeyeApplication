@@ -60,7 +60,7 @@ namespace RestfulAPI.Controllers
 
             foreach (User u in users)
             {
-                if ((user.username == u.username) && (user.password == u.password))
+                if ((user.Username == u.Username) && (user.Password == u.Password))
                 {
                     return "success";
                 }

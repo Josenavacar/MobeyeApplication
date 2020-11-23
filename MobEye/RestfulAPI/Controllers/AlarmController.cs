@@ -21,20 +21,19 @@ namespace RestfulAPI.Controllers
             this.alarmContext = alarmContext;
         }
 
-        //https://localhost:44349/api/messages/
-        [HttpGet] 
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<Alarm>>> GetAlarms()
         {
-            return await alarmContext.Alarms.ToListAsync();
+            return await alarmContext.Alarms.Include(alarm => alarm.Recipients).ToListAsync();
         }
 
-        //https://localhost:44349/api/messages/
+
         [HttpPost]
-        public async Task<ActionResult<Alarm>> PostAlarm(Alarm alarm)
+        public async Task<ActionResult<Alarm>> PostAlarm(AlarmPostModel alarm)
         {
             alarmContext.Alarms.Add(alarm);
             await alarmContext.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetAlarms),new { id = alarm.ID}, alarm);
+            return CreatedAtAction(nameof(GetAlarms), new { id = alarm.MessageID }, (Alarm)alarm);
         }
     }
 }
