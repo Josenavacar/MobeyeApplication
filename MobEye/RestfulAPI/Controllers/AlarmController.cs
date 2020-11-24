@@ -21,19 +21,20 @@ namespace RestfulAPI.Controllers
             this.alarmContext = alarmContext;
         }
 
+        //API-send message get Mobeye input
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Alarm>>> GetAlarms()
+        public List<Alarm> GetAlarms()
         {
-            return await alarmContext.Alarms.Include(alarm => alarm.Recipients).ToListAsync();
+            return alarmContext.Alarms.Include(alarm => alarm.Recipients).ToList();
         }
 
-
+        //API- send message Mobeye input
         [HttpPost]
-        public async Task<ActionResult<Alarm>> PostAlarm(AlarmPostModel alarm)
+        public Alarm PostAlarm(AlarmPostModel alarm)
         {
             alarmContext.Alarms.Add(alarm);
-            await alarmContext.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetAlarms), new { id = alarm.MessageID }, (Alarm)alarm);
+            alarmContext.SaveChanges();
+            return alarm;
         }
     }
 }
