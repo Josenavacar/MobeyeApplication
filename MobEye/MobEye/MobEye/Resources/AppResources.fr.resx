@@ -117,6 +117,42 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AlarmInfoMessage" xml:space="preserve">
+    <value>Vous recevrez une alarme en cas de problème</value>
+  </data>
+  <data name="AlarmTitle" xml:space="preserve">
+    <value>Alarme Active</value>
+  </data>
+  <data name="CodePageTitle" xml:space="preserve">
+    <value>Entrez Votre Code</value>
+  </data>
+  <data name="CodePlaceholder" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="ColumnID" xml:space="preserve">
+    <value>Identifiant de Compte</value>
+  </data>
+  <data name="ColumnLocation" xml:space="preserve">
+    <value>Endroit</value>
+  </data>
+  <data name="ColumnName" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="ColumnText" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="ConfirmButton" xml:space="preserve">
+    <value>Confirmer L'Alarme</value>
+  </data>
+  <data name="DeviceInfoMessage" xml:space="preserve">
+    <value>Tous vos appareils sont en bon état!</value>
+  </data>
+  <data name="DoorIdMessage" xml:space="preserve">
+    <value>Porte ID:</value>
+  </data>
+  <data name="DoorSelectTitle" xml:space="preserve">
+    <value>Sélectionnez une porte</value>
+  </data>
   <data name="ForgotPasswordText" xml:space="preserve">
     <value>Mot de passe oublié?</value>
   </data>
@@ -126,19 +162,43 @@
   <data name="LoginCodeButton" xml:space="preserve">
     <value>S'Identifier Avec Code SMS</value>
   </data>
+  <data name="LoginCodeMessage" xml:space="preserve">
+    <value>Établir une connexion avec code SMS</value>
+  </data>
   <data name="LoginMobeyeButton" xml:space="preserve">
     <value>J'ai une compte</value>
   </data>
   <data name="LoginMobeyeTitle" xml:space="preserve">
     <value>Se Connecter Avec Compte Mobeye</value>
   </data>
+  <data name="OpenButton" xml:space="preserve">
+    <value>Ouvrez Porte</value>
+  </data>
   <data name="PasswordPlaceholder" xml:space="preserve">
     <value>Mot De Passe</value>
+  </data>
+  <data name="PortalButton" xml:space="preserve">
+    <value>Au Site Web</value>
+  </data>
+  <data name="RemoteControlButton" xml:space="preserve">
+    <value>Télécommande</value>
+  </data>
+  <data name="RemoteMessage" xml:space="preserve">
+    <value>Télécommande</value>
+  </data>
+  <data name="SkipButton" xml:space="preserve">
+    <value>Ignorer L'Alarme</value>
   </data>
   <data name="StartPageTitle" xml:space="preserve">
     <value>Bienvenue Sur Mobeye</value>
   </data>
+  <data name="StatusMessage" xml:space="preserve">
+    <value>État: Fermé</value>
+  </data>
   <data name="UsernamePlaceholder" xml:space="preserve">
     <value>Nom D'Utilisateur</value>
+  </data>
+  <data name="WelcomeMessage" xml:space="preserve">
+    <value>Bienvenue Utilisateur</value>
   </data>
 </root>

@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MobEye.Controls;assembly=MobEye"
+             xmlns:resource="clr-namespace:MobEye.Resources"
              x:Class="MobEye.AlarmPage"
              Title="Active alarm">
 
@@ -13,10 +14,10 @@
             <ListView HasUnevenRows="False" x:Name="Message_List" ItemsSource="{Binding Messages}">
                 <ListView.Header>
                     <StackLayout Spacing="30" Orientation="Horizontal" VerticalOptions="Start">
-                        <Label Text="Device Name"/>
-                        <Label Text="Location"/>
-                        <Label Text="Text"/>
-                        <Label Text="Account ID"/>
+                        <Label Text="{x:Static resource:AppResources.ColumnName}"/>
+                        <Label Text="{x:Static resource:AppResources.ColumnText}"/>
+                        <Label Text="{x:Static resource:AppResources.ColumnLocation}"/>
+                        <Label Text="{x:Static resource:AppResources.ColumnID}"/>
                     </StackLayout>
                 </ListView.Header>
                 <ListView.ItemTemplate>
@@ -66,7 +67,7 @@
                  Margin="0,0,0,35"/>
 
             <Button Style="{StaticResource buttonStyle}"
-                Text="Confirm alarm"
+                Text="{x:Static resource:AppResources.ConfirmButton}"
                 Clicked="ConfirmAlarm"
                 BackgroundColor="#99CC00">
                 <Button.Background>
@@ -80,7 +81,7 @@
                 </Button.Background>
             </Button>
             <Button Style="{StaticResource buttonStyle}"
-                Text="Skip alarm"
+                Text="{x:Static resource:AppResources.SkipButton}"
                 Clicked="SkipAlarm"
                 BackgroundColor="Gray"/>
         </StackLayout>

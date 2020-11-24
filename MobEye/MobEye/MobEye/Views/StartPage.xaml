@@ -43,6 +43,23 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
+            
+            <!--DEBUG BUTTON DELETE BELOW-->
+
+            <Button x:Name="Btn_DEBUG" 
+                    Clicked="DebugHome"
+                Style="{StaticResource buttonStyle}" 
+                Text="DEBUG HOME PAGE">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                        <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                        <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
 
         </StackLayout>
     </ContentPage.Content>

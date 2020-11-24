@@ -24,7 +24,12 @@ namespace MobEye.Views
 
         private async void LoginCode(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginWithCode("Setup with your SMS code"));
+            await Navigation.PushAsync(new LoginWithCode("Setup With Your SMS Code"));
+        }
+
+        private async void DebugHome(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new HomePage());
         }
     }
 }
