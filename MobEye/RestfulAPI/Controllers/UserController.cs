@@ -24,20 +24,20 @@ namespace RestfulAPI.Controllers
 
         //https://localhost:44349/api/users/
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public IEnumerable<User> GetUsers()
         {
-            return await userContext.Users.ToListAsync();
+            return userContext.Users.ToList();
         }
 
         //https://localhost:44349/api/users/1/
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public User GetUser(int id)
         {
-            User user = await userContext.Users.FindAsync(id);
+            User user = userContext.Users.Find(id);
 
             if (user == null)
             {
-                return NotFound();
+                return null;
             }
 
             return user;
@@ -45,11 +45,11 @@ namespace RestfulAPI.Controllers
 
         //https://localhost:44349/api/users/
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public User PostUser(User user)
         {
             userContext.Users.Add(user);
-            await userContext.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetUsers), new { id = user.ID }, user);
+            userContext.SaveChangesAsync();
+            return user;
         }
 
         //https://localhost:44349/api/users/login
