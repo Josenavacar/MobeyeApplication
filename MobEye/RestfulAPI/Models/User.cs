@@ -16,15 +16,12 @@ namespace RestfulAPI.Models
         public int UserPhoneNumber { get; set; }
         public string DeviceImei { get; set; }
 
-        public virtual List<Alarm> Alarms { get; set; }
-
-        public User(string username, string password, int userPhoneNumber, string deviceImei, List<Alarm> alarms)
+        public User(string username, string password, int userPhoneNumber, string deviceImei)
         {
             this.Username = username;
             this.Password = password;
             this.UserPhoneNumber = userPhoneNumber;
             this.DeviceImei = deviceImei;
-            this.Alarms = alarms;
         }
 
         public User()

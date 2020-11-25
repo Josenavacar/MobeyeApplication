@@ -37,8 +37,9 @@ namespace RestfulAPI.Models
 
         //if the message is related to a limit violation, this can be included (not required)
         public string Value { get; set; }
+        public Status Status { get; set; }
 
-        public Alarm(int messageID, string deviceName, string location, string alarmText, string setReset, int priority, DateTime dateTime, List<User> recipients, bool escalation, string value="none")
+        public Alarm(int messageID, string deviceName, string location, string alarmText, string setReset, int priority, DateTime dateTime, List<User> recipients, bool escalation, Status status, string value="none")
         {
             MessageID = messageID;
             DeviceName = deviceName;
@@ -50,6 +51,7 @@ namespace RestfulAPI.Models
             Recipients = recipients;
             Escalation = escalation;
             Value = value;
+            Status = status;
         }
 
         public Alarm()

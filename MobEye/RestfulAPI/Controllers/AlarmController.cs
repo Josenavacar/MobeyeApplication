@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using RestfulAPI.Database;
 using RestfulAPI.Models;
 
@@ -28,13 +29,26 @@ namespace RestfulAPI.Controllers
             return alarmContext.Alarms.Include(alarm => alarm.Recipients).ToList();
         }
 
-        //API- send message Mobeye input
+
         [HttpPost]
         public Alarm PostAlarm(AlarmPostModel alarm)
         {
             alarmContext.Alarms.Add(alarm);
             alarmContext.SaveChanges();
             return alarm;
+        }
+
+        [HttpPost("status")]
+        public JObject PostStatus(JObject items)
+        {
+            //string answer = $"'Phone IMEI': '{status.User.DeviceImei}', 'private key': 'temp', 'Message ID': '{status.Alarm.MessageID}', 'Status': '{status.Alarm.Status}'";
+
+            //string answer = $"'Phone IMEI': '{sender.DeviceImei}'";
+            //string answer = $"'Phone IMEI': '{alarm.MessageID}'";
+
+            //JObject jsonAnswer = JObject.Parse(answer);
+
+            return (JObject)items;
         }
     }
 }

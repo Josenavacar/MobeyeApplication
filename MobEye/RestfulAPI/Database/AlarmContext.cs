@@ -22,8 +22,8 @@ namespace RestfulAPI.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Alarm>()
-                        .HasMany(x => x.Recipients)
-                        .WithMany(x => x.Alarms);
+                        .HasMany(x => x.Recipients);
+                        //.WithMany(x => x.Alarms);
         }
     }
 }

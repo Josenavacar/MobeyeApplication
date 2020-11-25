@@ -31,6 +31,7 @@ namespace RestfulAPI.Models
         public List<string> Recipients { get; set; }
         public bool Escalation { get; set; }
         public string Value { get; set; }
+        public Status Status { get; set; }
 
         public static implicit operator Alarm(AlarmPostModel alarm)
         {
@@ -51,6 +52,7 @@ namespace RestfulAPI.Models
                 DateTime=alarm.DateTime,
                 Recipients= users,
                 Escalation=alarm.Escalation,
+                Status=Status.received,
                 Value=alarm.Value
             };
         }
