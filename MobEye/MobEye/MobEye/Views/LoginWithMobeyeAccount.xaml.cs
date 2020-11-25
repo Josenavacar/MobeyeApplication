@@ -20,7 +20,9 @@ namespace MobEye.Views
 
         public async void SignIn(object sender, EventArgs e)
         {
-            User user = new User(Entry_Username.Text, Entry_Password.Text);
+            List<Models.Device> devices = new List<Models.Device>();
+
+            User user = new User(Entry_Username.Text, Entry_Password.Text, Role.ADMIN, devices);
             if (user.CheckInformation())
             {
                 await Navigation.PushAsync(new LoginWithCode("Set a code for the next login"));

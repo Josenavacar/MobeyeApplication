@@ -14,7 +14,18 @@ namespace MobEye.Models
 
         public List<Device> Devices { get; set; } 
 
+        // User 2
         public User() { }
+
+        // User 3
+        public User(string Username, string Password, Role role)
+        {
+            this.Username = Username;
+            this.Password = Password;
+            this.Role = role;
+        }
+
+        // User 1
         public User(string Username, string Password, Role role,List<Device>devices)
         {
             this.Username = Username;

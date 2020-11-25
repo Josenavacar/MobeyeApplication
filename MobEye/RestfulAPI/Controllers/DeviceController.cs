@@ -12,7 +12,7 @@ using RestfulAPI.Models;
 namespace RestfulAPI.Controllers
 
 {
-    [Route("api/messages/")]
+    [Route("api/devices/")]
     [ApiController]
     public class DeviceController : ControllerBase
     {
