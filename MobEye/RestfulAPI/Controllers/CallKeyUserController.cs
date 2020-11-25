@@ -13,7 +13,7 @@ using RestfulAPI.Models;
 
 namespace RestfulAPI.Controllers
 {
-    [Route("api/callKeyUsers")]
+    [Route("api/users/callkey/")]
     [ApiController]
     public class CallKeyUserController : ControllerBase
     {
@@ -24,54 +24,55 @@ namespace RestfulAPI.Controllers
             this.usersOfType3 = userType3Context;
         }
 
-        //https://localhost:44349/api/callKeyUsers
+        //https://localhost:44349/api/users/callkey/
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CallKeyUser>>> GetUsers()
+        public IEnumerable<CallKeyUser> GetUsers()
         {
-            return await usersOfType3.CallKeyUsers.ToListAsync();
+            return usersOfType3.CallKeyUsers.ToList();
         }
 
-        //https://localhost:44349/api/callKeyUsers/1234
+        //https://localhost:44349/api/users/callkey/1
         [HttpGet("{id}")]
-        public async Task<ActionResult<CallKeyUser>> GetUser(int id)
+        public CallKeyUser GetUser(int id)
         {
-            CallKeyUser user = await usersOfType3.CallKeyUsers.FindAsync(id);
+            CallKeyUser user = usersOfType3.CallKeyUsers.Find(id);
 
             if (user == null)
             {
-                return NotFound();
+                return null;
             }
 
             return user;
         }
 
-        //https://localhost:44349/api/callKeyUsers/
+        //https://localhost:44349/api/users/callkey/
         [HttpPost]
-        public async Task<ActionResult<CallKeyUser>> PostUser(CallKeyUser user)
+        public CallKeyUser PostUser([FromBody] CallKeyUser user)
         {
             usersOfType3.CallKeyUsers.Add(user);
-            await usersOfType3.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetUsers), new {id = user.ID }, user);
+            usersOfType3.SaveChangesAsync();
+            return user;
         }
 
 
         // get the IMEI's of the doors that the user has access to
-        //https://localhost:44349/api/callKeyUsers/doors/1234
-        [HttpGet("{id}")]
-        public async Task<ActionResult<List<int>>> GetUserDoors(int id)
+        //https://localhost:44349/api/users/callkey/doors/1/
+        [HttpGet("doors/{id}")]
+        public List<int> GetUserDoors(int id)
         {
-            CallKeyUser user = await usersOfType3.CallKeyUsers.FindAsync(id);
+            CallKeyUser user = usersOfType3.CallKeyUsers.Find(id);
 
             if (user == null)
             {
-                return NotFound();
+                return null;
             }
 
             return user.doorCodes;
         }
+
         // add another door to the user
-        //https://localhost:44349/api/callKeyUsers/addDoor
-        [HttpPost("addDoor")]
+        //https://localhost:44349/api/users/callkey/doors/add/
+        [HttpPost("doors/add")]
         public IEnumerable AddDoorToUser([FromBody] int id, int doorCode)
         {
             CallKeyUser user = usersOfType3.CallKeyUsers.Find(id);
