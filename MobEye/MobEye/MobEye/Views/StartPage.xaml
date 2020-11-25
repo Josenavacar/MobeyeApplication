@@ -61,6 +61,19 @@
                 </Button.Background>
             </Button>
 
+            
+                <Picker x:Name="Language_Select"
+                Title="Language" SelectedIndexChanged="ChangeLanguage">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>English</x:String>
+                            <x:String>Français</x:String>
+                            <x:String>Nederlands</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
