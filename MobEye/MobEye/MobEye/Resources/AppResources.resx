@@ -123,6 +123,9 @@
   <data name="AlarmTitle" xml:space="preserve">
     <value>Active Alarm</value>
   </data>
+  <data name="Btn_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
   <data name="CodePageTitle" xml:space="preserve">
     <value>Enter Your Code</value>
   </data>

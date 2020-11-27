@@ -79,6 +79,15 @@ namespace MobEye.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        internal static string Btn_Refresh {
+            get {
+                return ResourceManager.GetString("Btn_Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter Your Code.
         /// </summary>
         internal static string CodePageTitle {

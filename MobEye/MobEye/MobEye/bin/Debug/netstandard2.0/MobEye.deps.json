@@ -20,6 +20,9 @@
         "resources": {
           "fr/MobEye.resources.dll": {
             "locale": "fr"
+          },
+          "nl/MobEye.resources.dll": {
+            "locale": "nl"
           }
         }
       },
