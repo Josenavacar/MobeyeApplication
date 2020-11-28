@@ -12,11 +12,12 @@ using Android.Views;
 using Android.Widget;
 using MobEye.Droid;
 using Xamarin.Forms;
+using MobEye.Models;
 
 [assembly:Xamarin.Forms.Dependency(typeof(UniqueIdAndroid))]
 namespace MobEye.Droid
 {
-    public class UniqueIdAndroid
+    public class UniqueIdAndroid:IDevice
     {
         public string GetIdentifier() 
         {

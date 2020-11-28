@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:resource="clr-namespace:MobEye.Resources"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MobEye.Controls"
              x:Class="MobEye.Views.StartPage"
              Title="{x:Static resource:AppResources.StartPageTitle}">
     <ContentPage.Content>
@@ -59,8 +59,6 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-
-            
                 <Picker x:Name="Language_Select"
                 Title="Language" SelectedIndexChanged="ChangeLanguage">
                     <Picker.ItemsSource>
@@ -71,6 +69,13 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
+
+            <!--<local:OTPAutoFillControl
+	            Grid.Row="2"
+	            FontSize="Large"
+	            HorizontalOptions="Center"
+	            Keyboard="Numeric"
+	            Placeholder="XXXXXX_to_enter_sms_code_test" />-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

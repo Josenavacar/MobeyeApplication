@@ -4,8 +4,10 @@ using System.Text;
 
 namespace MobEye.Models
 {
-    public interface IDevice
+    public enum Role
     {
-        string GetIdentifier();
+        ADMIN,
+        STANDARDU2,
+        STANDARDU3
     }
 }

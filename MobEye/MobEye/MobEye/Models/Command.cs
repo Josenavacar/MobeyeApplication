@@ -4,8 +4,8 @@ using System.Text;
 
 namespace MobEye.Models
 {
-    public interface IDevice
+    public enum Command
     {
-        string GetIdentifier();
+        OPEN
     }
 }

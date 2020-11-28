@@ -20,7 +20,7 @@ namespace MobEye.Views
         }
         private async void SignIn(object sender, EventArgs e)
         {
-            User user = new User("user3", Entry_Code.Text);
+            User user = new User("user3", Entry_Code.Text, Role.STANDARDU3);
             if (user.CheckInformation())
             {
                 await Navigation.PushAsync(new AlarmPage());
