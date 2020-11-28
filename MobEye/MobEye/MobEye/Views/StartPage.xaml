@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MobEye.Controls"
              x:Class="MobEye.Views.StartPage"
              Title="Welcome to Mobeye">
 
@@ -43,6 +43,13 @@
                 </Button.Background>
             </Button>
 
+            <!--<local:OTPAutoFillControl
+	            Grid.Row="2"
+	            FontSize="Large"
+	            HorizontalOptions="Center"
+	            Keyboard="Numeric"
+	            Placeholder="XXXXXX_to_enter_sms_code_test" />-->
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
