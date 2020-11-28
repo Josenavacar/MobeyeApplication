@@ -31,6 +31,15 @@
       "sqlDebugging": true,
       "nativeDebugging": true,
       "applicationUrl": "https://localhost:5001;http://localhost:5000"
+    },
+    "newProfile1": {
+      "commandName": "Executable"
+    },
+    "newProfile2": {
+      "commandName": "Executable"
+    },
+    "newProfile3": {
+      "commandName": "Executable"
     }
   }
 }

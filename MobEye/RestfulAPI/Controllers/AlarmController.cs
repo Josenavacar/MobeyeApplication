@@ -23,13 +23,14 @@ namespace RestfulAPI.Controllers
         }
 
         //API-send message get Mobeye input
+        //https://localhost:44349/api/messages/
         [HttpGet]
         public List<Alarm> GetAlarms()
         {
             return alarmContext.Alarms.Include(alarm => alarm.Recipients).ToList();
         }
 
-
+        //https://localhost:44349/api/messages/
         [HttpPost]
         public Alarm PostAlarm(AlarmPostModel alarm)
         {

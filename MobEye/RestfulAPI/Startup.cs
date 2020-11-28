@@ -30,6 +30,7 @@ namespace RestfulAPI
         {
             services.AddDbContext<AlarmContext>(option => option.UseInMemoryDatabase("AlarmList"));
             services.AddDbContext<UserContext>(option => option.UseInMemoryDatabase("UserList"));
+            services.AddDbContext<CallKeyUserContext>(option => option.UseInMemoryDatabase("CallKeyUserList"));
             services.AddControllers().AddNewtonsoftJson(options =>
               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
            );
