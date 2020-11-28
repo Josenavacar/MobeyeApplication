@@ -18,5 +18,15 @@ namespace RestfulAPI.Database
             get;
             set;
         }
+
+        /*
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Alarm>()
+                .HasMany(x => x.Recipients);
+                //.HasMany(x => x.Alarms)
+
+        }
+        */
     }
 }
