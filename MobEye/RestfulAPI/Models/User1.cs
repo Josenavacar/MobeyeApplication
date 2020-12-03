@@ -9,17 +9,20 @@ namespace RestfulAPI.Models
     {
         public string Username { get; set; }
         public string Password { get; set; }
+        public int[] DoorID { get; set; }
 
-        public User1(String username, String password, int userPhoneNumber, string deviceImei) : base(userPhoneNumber, deviceImei)
+        public User1(int[] doors, String username, String password, int userPhoneNumber, string deviceImei) : base(userPhoneNumber, deviceImei)
         {
             this.Username = username;
             this.Password = password;
+            this.DoorID = doors;
         }
 
-        public User1(String username, String password, string deviceImei) : base(deviceImei)
+        public User1(int[] doors, String username, String password, string deviceImei) : base(deviceImei)
         {
             this.Username = username;
             this.Password = password;
+            this.DoorID = doors;
         }
 
 
