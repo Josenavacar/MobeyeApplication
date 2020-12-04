@@ -8,23 +8,26 @@ namespace MobEye.Models
     {
         //[Key]
         public int ID { get; set; }
-        public string deviceName { get; set; }
-        public string location { get; set; }
-        public string alarmText { get; set; }
-
-        public string accountId { get; set; }
+        public string DeviceName { get; set; }
+        public string Location { get; set; }
+        public string AlarmText { get; set; }
+        public string Value { get; set; }
+        public DateTime DateTime { get; set; }
+        public string AccountId { get; set; }
 
         public AlarmMessage()
         {
 
         }
 
-        public AlarmMessage(string deviceName, string location, string alarmText, string accountId)
+        public AlarmMessage(string deviceName, string location, string alarmText, string accountId, string value, DateTime dateTime)
         {
-            this.deviceName = deviceName;
-            this.location = location;
-            this.alarmText = alarmText;
-            this.accountId = accountId;
+            this.DeviceName = deviceName;
+            this.Location = location;
+            this.AlarmText = alarmText;
+            this.AccountId = accountId;
+            this.Value = value;
+            this.DateTime = dateTime;
         }
     }
 }

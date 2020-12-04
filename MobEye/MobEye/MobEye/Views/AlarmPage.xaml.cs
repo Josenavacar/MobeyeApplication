@@ -16,7 +16,7 @@ namespace MobEye
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AlarmPage : ContentPage
     {
-        private const String url = "https://192.168.1.59:45455/api/messages/";
+        private const String url = "https://192.168.178.20:45456/api/messages";
         private HttpClient httpClient;
         private HttpClientHandler clientHandler;
         private ObservableCollection<AlarmMessage> alarmMessages;
@@ -45,7 +45,6 @@ namespace MobEye
             var newalarmMessage = JsonConvert.DeserializeObject<List<AlarmMessage>>(content);
             alarmMessages = new ObservableCollection<AlarmMessage>(newalarmMessage);
             Message_List.ItemsSource = alarmMessages;
-
             base.OnAppearing();
         }
 
