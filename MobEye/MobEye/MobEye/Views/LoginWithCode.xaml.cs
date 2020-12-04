@@ -33,7 +33,7 @@ namespace MobEye.Views
                 httpClient = new HttpClient(clientHandler);
 
                 // send request to api and wait for response
-                var url = "https://145.93.44.225:45456/api/users/registration";
+                var url = "https://192.168.1.59:45456/api/users/registration";
                 var jsonData = new StringContent(JsonConvert.SerializeObject(Entry_Code.Text), Encoding.UTF8, "application/json");
                 var response = await httpClient.PostAsync(url, jsonData);
 
