@@ -17,7 +17,7 @@
                      Placeholder="Code"
                      Margin="0,0,0,20"
                      Keyboard="Numeric"
-                     IsPassword="true"/>
+                     IsPassword="False"/>
 
         <Button x:Name="Btn_LoginCode" Clicked="SignIn"
                 Style="{StaticResource buttonStyle}" 

@@ -2,12 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using RestfulAPI.Database;
 using RestfulAPI.Models;
+using RestfulAPI.Services;
 
 namespace RestfulAPI.Controllers
 {
@@ -67,6 +71,22 @@ namespace RestfulAPI.Controllers
             }
 
             return null;
+        }
+
+        //https://localhost:44349/api/users/registration
+        [HttpPost("registration")]
+        public JValue PostRegisterUser([FromBody] JValue data)
+        {
+            var random = new Random();
+            string privateKey = string.Empty;
+            int length = 5;
+
+            for (int i = 0; i < length; i++)
+            {
+                privateKey = String.Concat(privateKey, random.Next(10).ToString());
+            }
+
+            return (JValue)privateKey;
         }
     }
 }

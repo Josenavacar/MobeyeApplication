@@ -15,6 +15,8 @@ namespace MobEye.Views
         public HomePage()
         {
             InitializeComponent();
+
+            DisplayAlert("test", Preferences.Get("private_key", ""), "Close");
         }
 
         private void OpenPortal(object sender, EventArgs e)
