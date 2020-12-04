@@ -45,7 +45,6 @@ namespace MobEye
             var newalarmMessage = JsonConvert.DeserializeObject<List<AlarmMessage>>(content);
             alarmMessages = new ObservableCollection<AlarmMessage>(newalarmMessage);
             Message_List.ItemsSource = alarmMessages;
-
             base.OnAppearing();
         }
 
