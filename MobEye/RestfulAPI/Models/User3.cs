@@ -9,7 +9,7 @@ namespace RestfulAPI.Models
     {
         public int[] DoorID { get; set; }
 
-        public User3(int[] doors, int userPhoneNumber, string deviceImei, string key) : base(userPhoneNumber, deviceImei, key)
+        public User3(int[] doors, int userPhoneNumber, string deviceImei, string privateKey) : base(userPhoneNumber, deviceImei, privateKey)
         {
             this.DoorID = doors;
         }

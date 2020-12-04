@@ -53,8 +53,8 @@ namespace RestfulAPI.Controllers
         }
 
         //https://localhost:44349/api/users/login
-        [HttpPost("login")]
-        public IEnumerable LoginUser([FromBody] User user)
+        //[HttpPost("login")]
+        /*public IEnumerable LoginUser([FromBody] User user)
         {
             var users = userContext.Users.ToList();
 
@@ -67,6 +67,6 @@ namespace RestfulAPI.Controllers
             }
 
             return null;
-        }
+        }*/
     }
 }
