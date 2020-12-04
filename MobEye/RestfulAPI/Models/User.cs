@@ -13,16 +13,13 @@ namespace RestfulAPI.Models
         public int ID { get; set; }
         public int UserPhoneNumber { get; set; }
         public string DeviceImei { get; set; }
+        public string PrivateKey { get; set; }
 
-        public User(int userPhoneNumber, string deviceImei)
+        public User(int userPhoneNumber, string deviceImei, string key)
         {
             this.UserPhoneNumber = userPhoneNumber;
             this.DeviceImei = deviceImei;
-        }
-
-        public User(string deviceImei)
-        {
-            this.DeviceImei = deviceImei;
+            this.PrivateKey = key;
         }
     }
 }
