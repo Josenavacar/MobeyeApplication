@@ -30,11 +30,11 @@ namespace RestfulAPI
         {
             services.AddDbContext<AlarmContext>(option => option.UseInMemoryDatabase("AlarmList"));
             services.AddDbContext<UserContext>(option => option.UseInMemoryDatabase("UserList"));
-            services.AddDbContext<CallKeyUserContext>(option => option.UseInMemoryDatabase("CallKeyUserList"));
             services.AddControllers().AddNewtonsoftJson(options =>
               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
            );
         }
+ 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

@@ -11,27 +11,15 @@ namespace RestfulAPI.Models
     {
         [Key]
         public int ID { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
         public int UserPhoneNumber { get; set; }
         public string DeviceImei { get; set; }
+        public string PrivateKey { get; set; }
 
-        public User(string username, string password, int userPhoneNumber, string deviceImei)
+        public User(int userPhoneNumber, string deviceImei, string privateKey)
         {
-            this.Username = username;
-            this.Password = password;
             this.UserPhoneNumber = userPhoneNumber;
             this.DeviceImei = deviceImei;
-        }
-
-        public User()
-        {
-
-        }
-
-        public User(string deviceImei)
-        {
-            this.DeviceImei = deviceImei;
+            this.PrivateKey = privateKey;
         }
     }
 }

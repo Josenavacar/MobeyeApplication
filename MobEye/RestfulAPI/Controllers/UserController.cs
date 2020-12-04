@@ -56,23 +56,6 @@ namespace RestfulAPI.Controllers
             return user;
         }
 
-        //https://localhost:44349/api/users/login
-        [HttpPost("login")]
-        public IEnumerable LoginUser([FromBody] User user)
-        {
-            var users = userContext.Users.ToList();
-
-            foreach (User u in users)
-            {
-                if ((user.Username == u.Username) && (user.Password == u.Password))
-                {
-                    return "success";
-                }
-            }
-
-            return null;
-        }
-
         //https://localhost:44349/api/users/registration
         [HttpPost("registration")]
         public JValue PostRegisterUser([FromBody] JValue data)
