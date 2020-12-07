@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -23,6 +24,14 @@ namespace MobEye.Views
             InitializeComponent();
             Label_Message.Text = message;
         }
+
+        /// <summary>
+        /// Async method to handle the user login (user 2 and user 3)
+        /// Will send a POST request to api
+        /// Mobeye will authenticate user and response back with a private key to use for every future POST requests
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void SignIn(object sender, EventArgs e)
         {
             try
@@ -32,23 +41,50 @@ namespace MobEye.Views
                 clientHandler.ServerCertificateCustomValidationCallback = (s, cert, chain, sslPolicyErrors) => { return true; };
                 httpClient = new HttpClient(clientHandler);
 
-                // send request to api and wait for response
-                var url = "https://192.168.1.59:45456/api/users/registration";
-                var jsonData = new StringContent(JsonConvert.SerializeObject(Entry_Code.Text), Encoding.UTF8, "application/json");
-                var response = await httpClient.PostAsync(url, jsonData);
-
-                // if response successful then save private ket locally
-                // then show a popup (display alert) with result before goin to homepage
-                if(response.IsSuccessStatusCode)
+                if (Entry_Code.Text.Length == 6)
                 {
-                    var result = await response.Content.ReadAsStringAsync();
+                    User user3 = new User("user3", Entry_Code.Text, Role.STANDARDU3);
 
-                    Preferences.Set("private_key", result);
-                    Entry_Code.Text = Preferences.Get("private_key", "");
-                    await DisplayAlert("Successful", result, "Close");
-                    await Navigation.PushAsync(new HomePage());
+                    // send request to api and wait for response
+                    var url = "https://192.168.1.59:45455/api/users/registration";
+                    var jsonData = new StringContent(JsonConvert.SerializeObject(Entry_Code.Text), Encoding.UTF8, "application/json");
+                    var response = await httpClient.PostAsync(url, jsonData);
+
+                    // if response successful then save private ket locally
+                    // then show a popup (display alert) with result before goin to homepage
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+
+                        await SecureStorage.SetAsync("private_key", result);
+                        await DisplayAlert("Successful", result, "Close");
+                        await Navigation.PushAsync(new DoorPage());
+                    }
                 }
+                else if(Entry_Code.Text.Length == 5)
+                {
+                    User user2 = new User("user2", Entry_Code.Text, Role.STANDARDU2);
 
+                    // send request to api and wait for response
+                    var url = "https://192.168.1.59:45455/api/users/registration";
+                    var jsonData = new StringContent(JsonConvert.SerializeObject(Entry_Code.Text), Encoding.UTF8, "application/json");
+                    var response = await httpClient.PostAsync(url, jsonData);
+
+                    // if response successful then save private ket locally
+                    // then show a popup (display alert) with result before goin to homepage
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var result = await response.Content.ReadAsStringAsync();
+
+                        await SecureStorage.SetAsync("private_key", result);
+                        await DisplayAlert("Successful", result, "Close");
+                        await Navigation.PushAsync(new AlarmPage());
+                    }
+                }
+                else if(Entry_Code.Text.Length < 5)
+                {
+                    await DisplayAlert("Empty code", "Enter your code to login!", "Close");
+                }
             }
             catch (Exception ex)
             {
@@ -66,6 +102,11 @@ namespace MobEye.Views
             //}
         }
 
+        /// <summary>
+        /// Method to get a new code?
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ResendCode(object sender, EventArgs e)
         {
             DisplayAlert("Code resent", "Your code has been resend, it could take up to 5 minutes to arrive!", "Close");

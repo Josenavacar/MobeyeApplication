@@ -15,11 +15,23 @@ namespace MobEye.Models
         public DateTime DateTime { get; set; }
         public string AccountId { get; set; }
 
+        /// <summary>
+        /// Constructor for alarm
+        /// </summary>
         public AlarmMessage()
         {
 
         }
 
+        /// <summary>
+        /// Alarm constructor
+        /// </summary>
+        /// <param name="deviceName"></param>
+        /// <param name="location"></param>
+        /// <param name="alarmText"></param>
+        /// <param name="accountId"></param>
+        /// <param name="value"></param>
+        /// <param name="dateTime"></param>
         public AlarmMessage(string deviceName, string location, string alarmText, string accountId, string value, DateTime dateTime)
         {
             this.DeviceName = deviceName;

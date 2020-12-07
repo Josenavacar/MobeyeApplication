@@ -9,8 +9,6 @@ namespace MobEye
 {
     public partial class App : Application
     {
-        public ICommand TapCommand => new Command<string>(async (url) => await Launcher.OpenAsync(url));
-
         public App()
         {
             InitializeComponent();

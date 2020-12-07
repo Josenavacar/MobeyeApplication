@@ -5,7 +5,8 @@ using System.Text;
 namespace MobEye.Models
 {
     //This will be for database work
-    class Constants
+
+    public class Constants
     {
         public static bool IsDev = true;
     }

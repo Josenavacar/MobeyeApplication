@@ -19,22 +19,42 @@ namespace MobEye.Views
             InitializeComponent();
         }
 
-        private async void LoginMobeye(object sender, EventArgs e)
+        /// <summary>
+        /// Method to open login page (with an mobeye account)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginMobeye(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginWithMobeyeAccount());
+            Navigation.PushAsync(new LoginWithMobeyeAccount());
         }
 
-        private async void LoginCode(object sender, EventArgs e)
+        /// <summary>
+        /// Method to open login page (with a code)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginCode(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new LoginWithCode("Setup With Your SMS Code"));
+            Navigation.PushAsync(new LoginWithCode("Setup With Your SMS Code"));
         }
 
-        private async void DebugHome(object sender, EventArgs e)
+        /// <summary>
+        /// Method to open home page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DebugHome(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new HomePage());
+            Navigation.PushAsync(new HomePage());
         }
 
-        void ChangeLanguage(object sender, EventArgs args)
+        /// <summary>
+        /// Method to change app's language
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void ChangeLanguage(object sender, EventArgs args)
         {
             Picker languageSelect = (Picker)sender;
 

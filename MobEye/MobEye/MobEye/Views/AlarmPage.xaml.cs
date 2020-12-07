@@ -16,7 +16,7 @@ namespace MobEye
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AlarmPage : ContentPage
     {
-        private const String url = "https://192.168.1.59:45456/api/messages/";
+        private const String url = "https://192.168.1.59:45455/api/messages/";
         private HttpClient httpClient;
         private HttpClientHandler clientHandler;
         private ObservableCollection<AlarmMessage> alarmMessages;
@@ -25,16 +25,30 @@ namespace MobEye
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Method to confirm alarm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void ConfirmAlarm(object sender, EventArgs e)
         {
             (sender as Button).Text = "Alarm confirmed";
         }
 
+        /// <summary>
+        /// Method to skip alarm
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void SkipAlarm(object sender, EventArgs e)
         {
             (sender as Button).Text = "Alarm skipped";
         }
 
+        /// <summary>
+        /// Async method to display alarm message when page is opened
+        /// </summary>
         protected override async void OnAppearing()
         {
             clientHandler = new HttpClientHandler();
@@ -47,8 +61,5 @@ namespace MobEye
             Message_List.ItemsSource = alarmMessages;
             base.OnAppearing();
         }
-
-        public ObservableCollection<AlarmMessage> Messages { get { return alarmMessages; } }
-
     }
 }
