@@ -13,6 +13,11 @@ namespace MobEye.Models
         public List<Device> Devices { get; set; }
 
         /// <summary>
+        /// Constructor user
+        /// </summary>
+        public User() { }
+
+        /// <summary>
         /// Constructor for User 1
         /// </summary>
         /// <param name="Username"></param>
@@ -28,12 +33,7 @@ namespace MobEye.Models
         }
 
         /// <summary>
-        /// Constructor for User 2
-        /// </summary>
-        public User() { }
-
-        /// <summary>
-        /// Constructor for User 3
+        /// Constructor for User 2 & 3
         /// </summary>
         /// <param name="Username"></param>
         /// <param name="Password"></param>

@@ -71,5 +71,15 @@ namespace RestfulAPI.Controllers
 
             return (JValue)privateKey;
         }
+
+
+        //https://localhost:44349/api/users/door
+        [HttpPost("door")]
+        public JValue PostDoorUser([FromBody] JValue data)
+        {
+            
+
+            return (JValue)Request.Headers["Authorization"].ToString();
+        }
     }
 }

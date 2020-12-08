@@ -46,7 +46,7 @@ namespace MobEye.Views
                     User user3 = new User("user3", Entry_Code.Text, Role.STANDARDU3);
 
                     // send request to api and wait for response
-                    var url = "https://192.168.1.59:45455/api/users/registration";
+                    var url = "https://192.168.1.59:45456/api/users/registration";
                     var jsonData = new StringContent(JsonConvert.SerializeObject(Entry_Code.Text), Encoding.UTF8, "application/json");
                     var response = await httpClient.PostAsync(url, jsonData);
 
@@ -66,7 +66,7 @@ namespace MobEye.Views
                     User user2 = new User("user2", Entry_Code.Text, Role.STANDARDU2);
 
                     // send request to api and wait for response
-                    var url = "https://192.168.1.59:45455/api/users/registration";
+                    var url = "https://192.168.1.59:45456/api/users/registration";
                     var jsonData = new StringContent(JsonConvert.SerializeObject(Entry_Code.Text), Encoding.UTF8, "application/json");
                     var response = await httpClient.PostAsync(url, jsonData);
 
