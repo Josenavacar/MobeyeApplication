@@ -66,7 +66,8 @@
                             <x:String>English</x:String>
                             <x:String>Français</x:String>
                             <x:String>Nederlands</x:String>
-                        </x:Array>
+                            <x:String>Deutsch</x:String>
+                    </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
 

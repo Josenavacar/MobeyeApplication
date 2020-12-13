@@ -54,6 +54,10 @@ namespace MobEye.Views
                     AppResources.Culture = new CultureInfo("nl");
                     Navigation.PushAsync(new StartPage());
                 break;
+                case 3:
+                    AppResources.Culture = new CultureInfo("de");
+                    Navigation.PushAsync(new StartPage());
+                break;
 
             }
         }
