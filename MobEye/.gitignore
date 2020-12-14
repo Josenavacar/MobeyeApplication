@@ -607,3 +607,8 @@ MigrationBackup/
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,visualstudio,xamarinstudio,android,aspnetcore
  
+.vs/MobEye/DesignTimeBuild/.dtbcache.v2
+MobEye/MobEye.Android/bin/Debug/MobEye.dll
+MobEye/MobEye.Android/bin/Debug/MobEye.pdb
+MobEye/MobEye/bin/Debug/netstandard2.0/MobEye.dll
+MobEye/MobEye/bin/Debug/netstandard2.0/MobEye.pdb
