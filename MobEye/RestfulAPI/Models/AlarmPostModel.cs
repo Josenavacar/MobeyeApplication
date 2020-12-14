@@ -39,7 +39,7 @@ namespace RestfulAPI.Models
 
             for (int i = 0; i < alarm.Recipients.Count; i++)
             {
-                users.Add(new User(alarm.Recipients.ElementAt(i)));
+                //users.Add(new User(alarm.Recipients.ElementAt(i), "deviceImei", "key123"));
             }
             return new Alarm
             {

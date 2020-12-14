@@ -2,12 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using RestfulAPI.Database;
 using RestfulAPI.Models;
+using RestfulAPI.Services;
 
 namespace RestfulAPI.Controllers
 {
@@ -52,21 +56,20 @@ namespace RestfulAPI.Controllers
             return user;
         }
 
-        //https://localhost:44349/api/users/login
-        [HttpPost("login")]
-        public IEnumerable LoginUser([FromBody] User user)
+        //https://localhost:44349/api/users/registration
+        [HttpPost("registration")]
+        public JValue PostRegisterUser([FromBody] JValue data)
         {
-            var users = userContext.Users.ToList();
+            var random = new Random();
+            string privateKey = string.Empty;
+            int length = 5;
 
-            foreach (User u in users)
+            for (int i = 0; i < length; i++)
             {
-                if ((user.Username == u.Username) && (user.Password == u.Password))
-                {
-                    return "success";
-                }
+                privateKey = String.Concat(privateKey, random.Next(10).ToString());
             }
 
-            return null;
+            return (JValue)privateKey;
         }
     }
 }
