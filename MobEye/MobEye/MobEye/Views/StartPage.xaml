@@ -48,7 +48,7 @@
             <Button x:Name="Btn_DEBUG" 
                     Clicked="DebugHome"
                 Style="{StaticResource buttonStyle}" 
-                Text="DEBUG HOME PAGE">
+                Text="Go to MobEye's Portal">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0"
                              EndPoint="1,0">

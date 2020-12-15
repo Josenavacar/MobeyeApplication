@@ -46,7 +46,7 @@ namespace MobEye.Views
                 User user = new User(Entry_Username.Text, Entry_Username.Text, Role.ADMIN, devices);
 
                 // send request to api and wait for response
-                var url = "https://192.168.1.59:45456/api/users/registration";
+                var url = "https://192.168.1.59:45455/api/users/registration";
                 var jsonData = new StringContent(JsonConvert.SerializeObject("username" + Entry_Username.Text + "password" + Entry_Password.Text), Encoding.UTF8, "application/json");
                 //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await SecureStorage.GetAsync("private_key"));
                 var response = await httpClient.PostAsync(url, jsonData);

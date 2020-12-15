@@ -41,7 +41,7 @@ namespace MobEye.Views
             try
             {
                 // send request to api and wait for response
-                var url = "https://192.168.1.59:45456/api/users/door";
+                var url = "https://192.168.1.59:45455/api/users/door";
                 var jsonData = new StringContent(JsonConvert.SerializeObject(Door_Pick.SelectedItem.ToString()), Encoding.UTF8, "application/json");
                 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await SecureStorage.GetAsync("private_key"));
                 var response = await httpClient.PostAsync(url, jsonData);

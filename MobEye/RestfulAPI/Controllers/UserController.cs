@@ -69,7 +69,8 @@ namespace RestfulAPI.Controllers
                 privateKey = String.Concat(privateKey, random.Next(10).ToString());
             }
 
-            return (JValue)privateKey;
+            //return (JValue)privateKey;
+            return (JValue)"success";
         }
 
 
@@ -77,9 +78,9 @@ namespace RestfulAPI.Controllers
         [HttpPost("door")]
         public JValue PostDoorUser([FromBody] JValue data)
         {
-            
 
-            return (JValue)Request.Headers["Authorization"].ToString();
+            return (JValue)"success";
+            //return (JValue)Request.Headers["Authorization"].ToString();
         }
     }
 }
