@@ -19,6 +19,7 @@ namespace RestfulAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
+        // Context is used here to mock a database
         private readonly UserContext userContext;
 
         public UserController(UserContext userContext)
@@ -26,7 +27,12 @@ namespace RestfulAPI.Controllers
             this.userContext = userContext;
         }
 
-        //https://localhost:44349/api/users/
+
+        /// <summary>
+        /// //https://localhost:44349/api/users/
+        /// This GET method returns all the users from the 'database'
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
@@ -34,6 +40,11 @@ namespace RestfulAPI.Controllers
         }
 
         //https://localhost:44349/api/users/1/
+        /// <summary>
+        /// This GET method returns a user based on their ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public User GetUser(int id)
         {
@@ -48,6 +59,11 @@ namespace RestfulAPI.Controllers
         }
 
         //https://localhost:44349/api/users/
+        /// <summary>
+        /// This POST method creates and saves user in the 'database' then return user
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         [HttpPost]
         public User PostUser(User user)
         {
@@ -57,6 +73,12 @@ namespace RestfulAPI.Controllers
         }
 
         //https://localhost:44349/api/users/registration
+        /// <summary>
+        /// This POST method is used to confirm user's registration, 
+        /// POST request from the mobile (xamarin), it will return a random string of 5 digits to be used as a private key
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [HttpPost("registration")]
         public JValue PostRegisterUser([FromBody] JValue data)
         {
@@ -75,6 +97,12 @@ namespace RestfulAPI.Controllers
 
 
         //https://localhost:44349/api/users/door
+        /// <summary>
+        /// This POST is request is used only for testing purposes.
+        /// POST request from mobile to open a door, returns success string 
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [HttpPost("door")]
         public JValue PostDoorUser([FromBody] JValue data)
         {
