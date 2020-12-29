@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MobEye.Services;
 
 namespace MobEye.Views
 {
@@ -18,11 +19,13 @@ namespace MobEye.Views
     {
         private HttpClient httpClient;
         private HttpClientHandler clientHandler;
+        RegistrationAndAuthorizationService registrationAndAuthorizationService;
 
         public LoginWithCode(string message)
         {
             InitializeComponent();
             Label_Message.Text = message;
+            registrationAndAuthorizationService = new RegistrationAndAuthorizationService();
         }
 
         /// <summary>
@@ -34,6 +37,19 @@ namespace MobEye.Views
         /// <param name="e"></param>
         private async void SignIn(object sender, EventArgs e)
         {
+            String code = Entry_Code.Text;
+            Console.WriteLine(code);
+            var register = await registrationAndAuthorizationService.Register("aaaa1111", code);
+            Console.WriteLine(register.ToString()+" this is private key");
+            String privateKey = register.ToString();
+            Console.WriteLine(privateKey + " this is private key String");
+            await SecureStorage.SetAsync("privateKey", privateKey);
+            var secureStrogaePrivateKey = await SecureStorage.GetAsync("privateKey");
+            Console.WriteLine(secureStrogaePrivateKey.ToString() + " this is secure storage");
+            Application.Current.Properties["phoneCode"] = code;
+            Console.WriteLine(Application.Current.Properties["phoneCode"]+"here");
+            /*
+            Console.WriteLine("predi try");
             try
             {
                 // set up the http objects
@@ -48,7 +64,11 @@ namespace MobEye.Views
                     // send request to api and wait for response
                     var url = "https://192.168.1.59:45455/api/users/registration";
                     var jsonData = new StringContent(JsonConvert.SerializeObject(Entry_Code.Text), Encoding.UTF8, "application/json");
+                    Console.WriteLine(jsonData);
                     var response = await httpClient.PostAsync(url, jsonData);
+                    
+                    Console.WriteLine(response);
+                    
 
                     // if response successful then save private ket locally
                     // then show a popup (display alert) with result before goin to homepage
@@ -88,6 +108,7 @@ namespace MobEye.Views
             }
             catch (Exception ex)
             {
+                Console.WriteLine("exeption");
                 Console.WriteLine(ex.Message);
             }
 
@@ -100,7 +121,7 @@ namespace MobEye.Views
             //{
             //    await DisplayAlert("Empty code", "Enter your code to login!", "Close");
             //}
-        }
+        */}
 
         /// <summary>
         /// Method to get a new code?
