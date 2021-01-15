@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using RestfulAPI.Database;
 using RestfulAPI.Models;
+using RestfulAPI.Services;
 
 namespace RestfulAPI
 {
@@ -33,6 +34,12 @@ namespace RestfulAPI
             services.AddControllers().AddNewtonsoftJson(options =>
               options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
            );
+
+            services.AddSingleton<INotificationService, NotificationHubService>();
+
+            services.AddOptions<NotificationHubOptions>()
+                .Configure(Configuration.GetSection("NotificationHub").Bind)
+                .ValidateDataAnnotations();
         }
  
 
