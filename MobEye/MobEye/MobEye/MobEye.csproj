@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Requests\AuthorizationRequest.cs" />
     <Compile Remove="Responses\AuthorizationResponse.cs" />
   </ItemGroup>
 

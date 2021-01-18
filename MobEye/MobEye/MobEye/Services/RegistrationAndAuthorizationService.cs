@@ -60,13 +60,46 @@ namespace MobEye.Services
             }
         }
 
-        
+
 
         // Authroziation
 
-        /*  public void showDialog()
-          {
-              return showDialog(Register("12312", 123123));
-          }*/
+        public async Task<String> Authorization(String phoneId, String pKey)
+        {
+            Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/phoneauthorization"));
+            try
+            {
+                AuthorizationRequest authorizationRequest = new AuthorizationRequest("aaaa1111", "pkaaaa1111");
+
+                // Debug.WriteLine("asdasd");
+                Debug.WriteLine("https://www.api.mymobeye.com/api/phoneauthorization");
+                //string[] dataToSend = { code, imei };
+                string json = JsonConvert.SerializeObject(authorizationRequest);
+                Debug.WriteLine(json + "666666");
+                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = null;
+                response = await client.PostAsync(uri, content);
+                // if (response.IsSuccessStatusCode)
+                //{ 
+                var contentt = response.Content;
+
+                string jsonString = await contentt.ReadAsStringAsync().ConfigureAwait(false);
+
+                //   return JsonConvert.DeserializeObject<Item>(jsonString);
+
+                Debug.WriteLine("content   "+ content.ToString());
+                Debug.WriteLine(jsonString);
+               // String privateKey = JsonConvert.DeserializeObject<RegistrationResponse>(jsonString).PrivateKey;
+                return jsonString;
+                //}
+                // return null;
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+                return ex.ToString();
+            }
+        }
     }
 }

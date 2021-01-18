@@ -48,6 +48,9 @@ namespace MobEye.Views
             Console.WriteLine(secureStrogaePrivateKey.ToString() + " this is secure storage");
             Application.Current.Properties["phoneCode"] = code;
             Console.WriteLine(Application.Current.Properties["phoneCode"]+"here");
+
+            var authorization = await registrationAndAuthorizationService.Authorization("312312", "312312");
+            Console.WriteLine(authorization.ToString());
             /*
             Console.WriteLine("predi try");
             try
