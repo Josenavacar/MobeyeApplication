@@ -1,4 +1,6 @@
-﻿using Android.Content;
+﻿using Android.App;
+using Android.Content;
+using AndroidX.Core.App;
 using Java.Interop;
 using System;
 using WindowsAzure.Messaging.NotificationHubs;
@@ -7,60 +9,24 @@ namespace MobEye.Droid
 {
     internal class AzureListener : Java.Lang.Object, INotificationListener
     {
-
-        public IntPtr Handle => throw new NotImplementedException();
-
-        public int JniIdentityHashCode => throw new NotImplementedException();
-
-        public JniObjectReference PeerReference => throw new NotImplementedException();
-
-        public JniPeerMembers JniPeerMembers => throw new NotImplementedException();
-
-        public JniManagedPeerStates JniManagedPeerState => throw new NotImplementedException();
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Disposed()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void DisposeUnlessReferenced()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Finalized()
-        {
-            throw new NotImplementedException();
-        }
-
         public void OnPushNotificationReceived(Context context, INotificationMessage message)
         {
-            throw new NotImplementedException();
-        }
+            var intent = new Intent(context, typeof(MainActivity));
+            intent.AddFlags(ActivityFlags.ClearTop);
+            var pendingIntent = PendingIntent.GetActivity(context, 0, intent, PendingIntentFlags.OneShot);
 
-        public void SetJniIdentityHashCode(int value)
-        {
-            throw new NotImplementedException();
-        }
+            var notificationBuilder = new NotificationCompat.Builder(context, MainActivity.CHANNEL_ID);
 
-        public void SetJniManagedPeerState(JniManagedPeerStates value)
-        {
-            throw new NotImplementedException();
-        }
+            notificationBuilder.SetContentTitle(message.Title)
+                        .SetSmallIcon(Resource.Drawable.ic_launcher)
+                        .SetContentText(message.Body)
+                        .SetAutoCancel(true)
+                        .SetShowWhen(false)
+                        .SetContentIntent(pendingIntent);
 
-        public void SetPeerReference(JniObjectReference reference)
-        {
-            throw new NotImplementedException();
-        }
+            var notificationManager = NotificationManager.FromContext(context);
 
-        public void UnregisterFromRuntime()
-        {
-            throw new NotImplementedException();
+            notificationManager.Notify(0, notificationBuilder.Build());
         }
     }
 }
