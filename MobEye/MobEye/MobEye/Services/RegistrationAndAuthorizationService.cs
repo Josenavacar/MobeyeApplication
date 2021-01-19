@@ -15,17 +15,24 @@ namespace MobEye.Services
 {
     class RegistrationAndAuthorizationService
     {
-        string result;
-        HttpClient client;
+        private HttpClient client;
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public RegistrationAndAuthorizationService()
         {
             HttpClientHandler clientHandler = new HttpClientHandler();
             clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
-
             client = new HttpClient(clientHandler);
-            result = null;
         }
 
+        /// <summary>
+        /// Post method to register 
+        /// </summary>
+        /// <param name="phoneID"></param>
+        /// <param name="code"></param>
+        /// <returns></returns>
         public async Task<String> Register(String phoneID, String code)
         {
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/registerphone"));
@@ -44,8 +51,6 @@ namespace MobEye.Services
 
                 if (response.IsSuccessStatusCode)
                 {
-                    //Console.WriteLine(await SecureStorage.GetAsync("phone_id") + await SecureStorage.GetAsync("private_key"));
-
                     var responseContent = response.Content;
 
                     string jsonString = await responseContent.ReadAsStringAsync().ConfigureAwait(false);
@@ -67,9 +72,12 @@ namespace MobEye.Services
             }
         }
 
-
-
-        // Authroziation
+        /// <summary>
+        /// Post method to get authorizations
+        /// </summary>
+        /// <param name="phoneId"></param>
+        /// <param name="privateKey"></param>
+        /// <returns></returns>
         public async Task<String> Authorization(String phoneId, String privateKey)
         {
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/phoneauthorization"));
@@ -89,19 +97,28 @@ namespace MobEye.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var c = response.Content;
+
                     var jsonString = await c.ReadAsStringAsync().ConfigureAwait(false);
+
                     List<Device> devices = new List<Device>();
+
                     JObject jObject = JObject.Parse(jsonString);
+
                     String urole = (string)jObject["UserRole"];
+
                     await SecureStorage.SetAsync("role", urole);
+
                     String pk = (string)jObject["PrivateKey"];
+
                     Device dev = new Device();
 
                     if (jObject["Devices"].First["DeviceId"] != null)
                     {
                         
                         dev.ID = (int)jObject["Devices"].First["DeviceId"];
+
                         dev.DeviceName = (string)jObject["Devices"].First["DeviceName"];
+
                         dev.CommandText = (string)jObject["Devices"].First["CommandText"];
 
                         if ((String)jObject["Devices"].First["Command"] == Command.DO1.ToString())
@@ -112,8 +129,6 @@ namespace MobEye.Services
                         await SecureStorage.SetAsync("device", dev.ID.ToString());
                         devices.Add(dev);
                     }
-
-                    //Console.WriteLine(dev.ToString());
 
                     AuthorizationResponse response1 = new AuthorizationResponse(urole, pk, devices);
 
