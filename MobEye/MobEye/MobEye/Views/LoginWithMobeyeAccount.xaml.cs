@@ -43,7 +43,7 @@ namespace MobEye.Views
 
             try
             {
-                User user = new User(Entry_Username.Text, Entry_Username.Text, Role.ADMIN, devices);
+                User user = new User(Entry_Username.Text, Entry_Username.Text, Role.Account, devices);
 
                 // send request to api and wait for response
                 var url = "https://192.168.1.59:45455/api/users/registration";

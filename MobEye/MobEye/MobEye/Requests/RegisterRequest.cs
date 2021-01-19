@@ -13,6 +13,7 @@ namespace MobEye.Requests
         {
 
         }
+
         public RegistrationRequest(String PhoneId, String Code)
         {
             this.PhoneId = PhoneId;

@@ -11,6 +11,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MobEye.Services;
+using MobEye.Responses;
 
 namespace MobEye.Views
 {
@@ -37,94 +38,66 @@ namespace MobEye.Views
         /// <param name="e"></param>
         private async void SignIn(object sender, EventArgs e)
         {
+            SecureStorage.Remove("role");
             String code = Entry_Code.Text;
-            Console.WriteLine(code);
-            var register = await registrationAndAuthorizationService.Register("aaaa1111", code);
-            Console.WriteLine(register.ToString()+" this is private key");
-            String privateKey = register.ToString();
-            Console.WriteLine(privateKey + " this is private key String");
-            await SecureStorage.SetAsync("privateKey", privateKey);
-            var secureStrogaePrivateKey = await SecureStorage.GetAsync("privateKey");
-            Console.WriteLine(secureStrogaePrivateKey.ToString() + " this is secure storage");
-            Application.Current.Properties["phoneCode"] = code;
-            Console.WriteLine(Application.Current.Properties["phoneCode"]+"here");
 
-            var authorization = await registrationAndAuthorizationService.Authorization("312312", "312312");
-            Console.WriteLine(authorization.ToString());
-            /*
-            Console.WriteLine("predi try");
-            try
+            if(code == "11111")
             {
-                // set up the http objects
-                clientHandler = new HttpClientHandler();
-                clientHandler.ServerCertificateCustomValidationCallback = (s, cert, chain, sslPolicyErrors) => { return true; };
-                httpClient = new HttpClient(clientHandler);
-
-                if (Entry_Code.Text.Length == 6)
+                var register = registrationAndAuthorizationService.Register(PhoneID.aaaa1111.ToString(), code);
+                await SecureStorage.SetAsync("phone_id", PhoneID.aaaa1111.ToString());
+                Application.Current.Properties["phoneCode"] = code;
+                await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+                
+                if(await SecureStorage.GetAsync("role") == "Account")
                 {
-                    User user3 = new User("user3", Entry_Code.Text, Role.STANDARDU3);
-
-                    // send request to api and wait for response
-                    var url = "https://192.168.1.59:45455/api/users/registration";
-                    var jsonData = new StringContent(JsonConvert.SerializeObject(Entry_Code.Text), Encoding.UTF8, "application/json");
-                    Console.WriteLine(jsonData);
-                    var response = await httpClient.PostAsync(url, jsonData);
-                    
-                    Console.WriteLine(response);
-                    
-
-                    // if response successful then save private ket locally
-                    // then show a popup (display alert) with result before goin to homepage
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var result = await response.Content.ReadAsStringAsync();
-
-                        await SecureStorage.SetAsync("private_key", result);
-                        await DisplayAlert("Successful", result, "Close");
-                        await Navigation.PushAsync(new DoorPage());
-                    }
-                }
-                else if(Entry_Code.Text.Length == 5)
-                {
-                    User user2 = new User("user2", Entry_Code.Text, Role.STANDARDU2);
-
-                    // send request to api and wait for response
-                    var url = "https://192.168.1.59:45455/api/users/registration";
-                    var jsonData = new StringContent(JsonConvert.SerializeObject(Entry_Code.Text), Encoding.UTF8, "application/json");
-                    var response = await httpClient.PostAsync(url, jsonData);
-
-                    // if response successful then save private ket locally
-                    // then show a popup (display alert) with result before goin to homepage
-                    if (response.IsSuccessStatusCode)
-                    {
-                        var result = await response.Content.ReadAsStringAsync();
-
-                        await SecureStorage.SetAsync("private_key", result);
-                        await DisplayAlert("Successful", result, "Close");
-                        await Navigation.PushAsync(new AlarmPage());
-                    }
-                }
-                else if(Entry_Code.Text.Length < 5)
-                {
-                    await DisplayAlert("Empty code", "Enter your code to login!", "Close");
+                    await Navigation.PushAsync(new HomePage());
                 }
             }
-            catch (Exception ex)
+            else if (code == "22222")
             {
-                Console.WriteLine("exeption");
-                Console.WriteLine(ex.Message);
+                var register = registrationAndAuthorizationService.Register(PhoneID.bbbb2222.ToString(), code);
+                await SecureStorage.SetAsync("phone_id", PhoneID.bbbb2222.ToString());
+                Application.Current.Properties["phoneCode"] = code;
+                await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+                if (await SecureStorage.GetAsync("role") == "Account")
+                {
+                    await Navigation.PushAsync(new HomePage());
+                }
             }
-
-            //User user = new User("user3", Entry_Code.Text, Role.STANDARDU3);
-            //if (user.CheckInformation())
-            //{
-            //    await Navigation.PushAsync(new AlarmPage());
-            //}
-            //else
-            //{
-            //    await DisplayAlert("Empty code", "Enter your code to login!", "Close");
-            //}
-        */}
+            else if (code == "33333")
+            {
+                var register = registrationAndAuthorizationService.Register(PhoneID.cccc3333.ToString(), code);
+                await SecureStorage.SetAsync("phone_id", PhoneID.cccc3333.ToString());
+                Application.Current.Properties["phoneCode"] = code;
+                await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+                if (await SecureStorage.GetAsync("role") == "Standard")
+                {
+                    await Navigation.PushAsync(new AlarmPage());
+                }
+            }
+            else if (code == "44444")
+            {
+                var register = registrationAndAuthorizationService.Register(PhoneID.dddd4444.ToString(), code);
+                await SecureStorage.SetAsync("phone_id", PhoneID.dddd4444.ToString());
+                Application.Current.Properties["phoneCode"] = code;
+                await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+                if (await SecureStorage.GetAsync("role") == "Standard")
+                {
+                    await Navigation.PushAsync(new DoorPage());
+                }
+            }
+            else if (code == "55555")
+            {
+                var register = registrationAndAuthorizationService.Register(PhoneID.eeee5555.ToString(), code);
+                await SecureStorage.SetAsync("phone_id", PhoneID.eeee5555.ToString());
+                Application.Current.Properties["phoneCode"] = code;
+                await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+                if (await SecureStorage.GetAsync("role") == "Standard")
+                {
+                    await Navigation.PushAsync(new AlarmPage());
+                }
+            }
+        }
 
         /// <summary>
         /// Method to get a new code?

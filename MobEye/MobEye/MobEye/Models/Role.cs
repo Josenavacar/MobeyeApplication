@@ -9,8 +9,7 @@ namespace MobEye.Models
     /// </summary>
     public enum Role
     {
-        ADMIN,
-        STANDARDU2,
-        STANDARDU3
+        Account,
+        Standard
     }
 }

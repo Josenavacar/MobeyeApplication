@@ -7,8 +7,42 @@ namespace MobEye.Models
     public class Device
     {
         private int id;
-        private string deviceName;
+        private String deviceName;
+        private String commandText;
         private Command command;
+
+        /// <summary>
+        /// ID property
+        /// </summary>
+        public int ID
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Device name property
+        /// </summary>
+        public String DeviceName
+        {
+            get;
+            set;
+        }
+
+        public String CommandText
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Door command property
+        /// </summary>
+        public Command Command
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// Device constructor
@@ -24,38 +58,17 @@ namespace MobEye.Models
         /// <param name="id"></param>
         /// <param name="deviceName"></param>
         /// <param name="command"></param>
-        public Device(int id, string deviceName, Command command)
+        public Device(int id, String deviceName, String commandText, Command command)
         {
-            this.id = id;
-            this.deviceName = deviceName;
-            this.command = command;
+            this.ID = id;
+            this.DeviceName = deviceName;
+            this.CommandText = commandText;
+            this.Command = command;
         }
 
-        /// <summary>
-        /// ID property
-        /// </summary>
-        public int Id
+        public override string ToString()
         {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Device name property
-        /// </summary>
-        public string DeviceName
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// Door command property
-        /// </summary>
-        public Command Command
-        {
-            get;
-            set;
+            return "id:" + this.ID + " device name:" + this.DeviceName + " command text" + this.CommandText + " command:" + this.Command;
         }
     }
 }

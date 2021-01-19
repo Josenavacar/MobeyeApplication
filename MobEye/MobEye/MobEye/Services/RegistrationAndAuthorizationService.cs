@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MobEye.Requests;
 using MobEye.Responses;
+using Xamarin.Essentials;
+using Newtonsoft.Json.Linq;
+using MobEye.Models;
+
 namespace MobEye.Services
 {
     class RegistrationAndAuthorizationService
@@ -22,36 +26,39 @@ namespace MobEye.Services
             result = null;
         }
 
-        public async Task<String> Register(String code, String imei)
+        public async Task<String> Register(String phoneID, String code)
         {
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/registerphone"));
+
             try
             {
-                RegistrationRequest registrationRequest = new RegistrationRequest(code, imei);
+                RegistrationRequest registrationRequest = new RegistrationRequest(phoneID, code);
 
-                // Debug.WriteLine("asdasd");
-                Debug.WriteLine("https://www.api.mymobeye.com/api/registerphone");
-                //string[] dataToSend = { code, imei };
                 string json = JsonConvert.SerializeObject(registrationRequest);
-                Debug.WriteLine(json + "123456");
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                StringContent registrationContent = new StringContent(json, Encoding.UTF8, "application/json");
+
                 HttpResponseMessage response = null;
-                response = await client.PostAsync(uri, content);
-                // if (response.IsSuccessStatusCode)
-                //{ 
-                var contentt = response.Content;
 
-                string jsonString = await contentt.ReadAsStringAsync().ConfigureAwait(false);
+                response = await client.PostAsync(uri, registrationContent);
 
-                //   return JsonConvert.DeserializeObject<Item>(jsonString);
+                if (response.IsSuccessStatusCode)
+                {
+                    //Console.WriteLine(await SecureStorage.GetAsync("phone_id") + await SecureStorage.GetAsync("private_key"));
 
-                Debug.WriteLine(registrationRequest.ToString());
-                Debug.WriteLine(JsonConvert.DeserializeObject<RegistrationResponse>(jsonString).PrivateKey);
-                String privateKey = JsonConvert.DeserializeObject<RegistrationResponse>(jsonString).PrivateKey;
-                return privateKey;
-                //}
-                // return null;
+                    var responseContent = response.Content;
 
+                    string jsonString = await responseContent.ReadAsStringAsync().ConfigureAwait(false);
+
+                    String privateKey = JsonConvert.DeserializeObject<RegistrationResponse>(jsonString).PrivateKey;
+
+                    await SecureStorage.SetAsync("private_key", privateKey);
+
+                    //await this.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+
+                    return privateKey;
+                }
+                return null;
             }
             catch (Exception ex)
             {
@@ -63,37 +70,57 @@ namespace MobEye.Services
 
 
         // Authroziation
-
-        public async Task<String> Authorization(String phoneId, String pKey)
+        public async Task<String> Authorization(String phoneId, String privateKey)
         {
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/phoneauthorization"));
+
             try
             {
-                AuthorizationRequest authorizationRequest = new AuthorizationRequest("aaaa1111", "pkaaaa1111");
+                AuthorizationRequest authorizationRequest = new AuthorizationRequest(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
 
-                // Debug.WriteLine("asdasd");
-                Debug.WriteLine("https://www.api.mymobeye.com/api/phoneauthorization");
-                //string[] dataToSend = { code, imei };
                 string json = JsonConvert.SerializeObject(authorizationRequest);
-                Debug.WriteLine(json + "666666");
+
                 StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
                 HttpResponseMessage response = null;
+
                 response = await client.PostAsync(uri, content);
-                // if (response.IsSuccessStatusCode)
-                //{ 
-                var contentt = response.Content;
 
-                string jsonString = await contentt.ReadAsStringAsync().ConfigureAwait(false);
+                if (response.IsSuccessStatusCode)
+                {
+                    var c = response.Content;
+                    var jsonString = await c.ReadAsStringAsync().ConfigureAwait(false);
+                    List<Device> devices = new List<Device>();
+                    JObject jObject = JObject.Parse(jsonString);
+                    String urole = (string)jObject["UserRole"];
+                    await SecureStorage.SetAsync("role", urole);
+                    String pk = (string)jObject["PrivateKey"];
+                    Device dev = new Device();
 
-                //   return JsonConvert.DeserializeObject<Item>(jsonString);
+                    if (jObject["Devices"].First["DeviceId"] != null)
+                    {
+                        
+                        dev.ID = (int)jObject["Devices"].First["DeviceId"];
+                        dev.DeviceName = (string)jObject["Devices"].First["DeviceName"];
+                        dev.CommandText = (string)jObject["Devices"].First["CommandText"];
 
-                Debug.WriteLine("content   "+ content.ToString());
-                Debug.WriteLine(jsonString);
-               // String privateKey = JsonConvert.DeserializeObject<RegistrationResponse>(jsonString).PrivateKey;
-                return jsonString;
-                //}
-                // return null;
+                        if ((String)jObject["Devices"].First["Command"] == Command.DO1.ToString())
+                        {
+                            dev.Command = Command.DO1;
+                        }
 
+                        await SecureStorage.SetAsync("device", dev.ID.ToString());
+                        devices.Add(dev);
+                    }
+
+                    //Console.WriteLine(dev.ToString());
+
+                    AuthorizationResponse response1 = new AuthorizationResponse(urole, pk, devices);
+
+                    return response1.ToString();
+                }
+
+                return null;
             }
             catch (Exception ex)
             {

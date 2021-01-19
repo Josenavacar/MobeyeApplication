@@ -9,6 +9,6 @@ namespace MobEye.Models
     /// </summary>
     public enum Command
     {
-        OPEN
+        DO1
     }
 }
