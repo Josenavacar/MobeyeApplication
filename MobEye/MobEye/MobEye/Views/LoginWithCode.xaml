@@ -32,5 +32,20 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
+
+        <Button x:Name="Btn_LoginMobeyeAccount" 
+                    Clicked="LoginMobeye"
+                Style="{StaticResource buttonStyle}" 
+                Text="Login with account">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                    <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                    <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
     </StackLayout>
 </ContentPage>

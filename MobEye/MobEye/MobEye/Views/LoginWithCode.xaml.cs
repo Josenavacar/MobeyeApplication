@@ -108,5 +108,16 @@ namespace MobEye.Views
         {
             DisplayAlert("Code resent", "Your code has been resend, it could take up to 5 minutes to arrive!", "Close");
         }
+
+
+        /// <summary>
+        /// Method to open login page (with an mobeye account)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoginMobeye(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new LoginWithMobeyeAccount());
+        }
     }
 }

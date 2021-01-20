@@ -19,15 +19,6 @@ namespace MobEye.Views
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Method to open login page (with an mobeye account)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void LoginMobeye(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new LoginWithMobeyeAccount());
-        }
 
         /// <summary>
         /// Method to open login page (with a code)

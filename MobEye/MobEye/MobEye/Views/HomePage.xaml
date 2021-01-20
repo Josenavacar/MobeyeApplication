@@ -36,8 +36,9 @@
                           Offset="1.0"/>
                     </LinearGradientBrush>
                 </Button.Background>
-            </Button>            
-            <!--<Button x:Name="Btn_Remote_Control" 
+            </Button>   
+            
+            <Button x:Name="Btn_Remote_Control" 
                 Style="{StaticResource buttonStyle}"  
                 Text="{x:Static resource:AppResources.RemoteControlButton}"
                 Clicked="RemoteControlPage">
@@ -50,7 +51,7 @@
                           Offset="1.0"/>
                     </LinearGradientBrush>
                 </Button.Background>
-            </Button>-->
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

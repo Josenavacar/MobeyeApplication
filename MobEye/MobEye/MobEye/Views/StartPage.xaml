@@ -13,21 +13,6 @@
                WidthRequest="220"
                     Margin="0,0,0,30"/>
 
-            <Button x:Name="Btn_LoginMobeyeAccount" 
-                    Clicked="LoginMobeye"
-                Style="{StaticResource buttonStyle}" 
-                Text="{x:Static resource:AppResources.LoginMobeyeButton}">
-                <Button.Background>
-                    <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="1,0">
-                        <GradientStop Color="#99CC00"
-                          Offset="0.1"/>
-                        <GradientStop Color="#72ab72"
-                          Offset="1.0"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>
-
             <Button x:Name="Btn_LoginSMSCode" 
                     Clicked="LoginCode"
                 Style="{StaticResource buttonStyle}" 
@@ -45,7 +30,7 @@
             
             <!--DEBUG BUTTON DELETE BELOW-->
 
-            <Button x:Name="Btn_DEBUG" 
+            <!--<Button x:Name="Btn_DEBUG" 
                     Clicked="DebugHome"
                 Style="{StaticResource buttonStyle}" 
                 Text="Go to MobEye's Portal">
@@ -58,24 +43,18 @@
                           Offset="1.0"/>
                     </LinearGradientBrush>
                 </Button.Background>
-            </Button>
-                <Picker x:Name="Language_Select"
+            </Button>-->
+            
+            <Picker x:Name="Language_Select"
                 Title="Language" SelectedIndexChanged="ChangeLanguage">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>English</x:String>
-                            <x:String>Français</x:String>
-                            <x:String>Nederlands</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-
-            <!--<local:OTPAutoFillControl
-	            Grid.Row="2"
-	            FontSize="Large"
-	            HorizontalOptions="Center"
-	            Keyboard="Numeric"
-	            Placeholder="XXXXXX_to_enter_sms_code_test" />-->
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>English</x:String>
+                        <x:String>Français</x:String>
+                        <x:String>Nederlands</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
