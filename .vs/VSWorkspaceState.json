@@ -1,6 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MobEye",
+    "\\MobEye\\RestfulAPI",
+    "\\MobEye\\RestfulAPI\\Controllers",
+    "\\MobEye\\RestfulAPI\\Database",
+    "\\MobEye\\RestfulAPI\\Models",
+    "\\MobEye\\RestfulAPI\\Properties",
+    "\\MobEye\\RestfulAPI\\Services"
   ],
+  "SelectedNode": "\\MobEye",
   "PreviewInSolutionExplorer": false
 }

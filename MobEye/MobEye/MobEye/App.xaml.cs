@@ -1,6 +1,9 @@
-﻿using System;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MobEye.Views;
+using Xamarin.Essentials;
+using System.Windows.Input;
 
 namespace MobEye
 {
@@ -9,8 +12,9 @@ namespace MobEye
         public App()
         {
             InitializeComponent();
+            BindingContext = this;
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new StartPage());
         }
 
         protected override void OnStart()
@@ -24,5 +28,6 @@ namespace MobEye
         protected override void OnResume()
         {
         }
+
     }
 }
