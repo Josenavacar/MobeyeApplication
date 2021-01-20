@@ -1,11 +1,12 @@
-﻿using System;
+﻿using MobEye.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace MobEye.Models
+namespace MobEye.Responses
 {
-    public class AlarmMessage
+    public class AlarmResponse
     {
         [Key]
         public int MessageID { get; set; }
@@ -38,7 +39,7 @@ namespace MobEye.Models
         public string Value { get; set; }
         public Status Status { get; set; }
 
-        public AlarmMessage(int messageID, string deviceName, string location, string alarmText, string setReset, int priority, DateTime dateTime, List<User> recipients, bool escalation, Status status, string value = "none")
+        public AlarmResponse(int messageID, string deviceName, string location, string alarmText, string setReset, int priority, DateTime dateTime, List<User> recipients, bool escalation, Status status, string value = "none")
         {
             MessageID = messageID;
             DeviceName = deviceName;
@@ -53,8 +54,13 @@ namespace MobEye.Models
             Status = status;
         }
 
-        public AlarmMessage()
+        public AlarmResponse()
         {
+        }
+
+        public override string ToString()
+        {
+            return "Message ID: " + this.MessageID + " Device Name: " + this.DeviceName + " Location: " + this.Location + " Alarm Text: " + this.AlarmText + " Reset: " + this.SetReset + " Priority: " + this.Priority + " Time: " + this.DateTime + " Recipients: " + this.Recipients + " Escalation: " + this.Escalation + " Value: " + this.Value + " Status: " + this.Status;
         }
     }
 }

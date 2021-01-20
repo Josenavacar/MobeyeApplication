@@ -17,6 +17,13 @@ namespace MobEye.Views
             InitializeComponent();
         }
 
+        protected override void OnAppearing() 
+        {
+
+            DisplayAlert("Successful", "lll", "Close");
+        }
+
+
         /// <summary>
         /// Method to direct user to Mobeye's portal
         /// </summary>
@@ -26,6 +33,11 @@ namespace MobEye.Views
         {
             //'Device.OpenUri(Uri)' is obsolete: 'OpenUri is obsolete as of version 4.3.0. Use Launcher.OpenAsync (or CanOpenAsync, or TryOpenAsync) from Xamarin.Essentials instead.'
             Device.OpenUri(new Uri("https://www.mymobeye.eu/"));
+        }
+
+        private void OpenAlarmPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AlarmPage());
         }
 
         /// <summary>

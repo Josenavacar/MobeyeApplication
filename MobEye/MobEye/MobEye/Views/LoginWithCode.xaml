@@ -11,10 +11,10 @@
                HeightRequest="170"
                WidthRequest="170"/>
 
-        <Label x:Name="Label_Message"/>
+        <!--<Label x:Name="Label_Message"/>-->
         
         <local:CustomEntry x:Name="Entry_Code" 
-                     Placeholder="Code"
+                     Placeholder="Enter your code here..."
                      Margin="0,0,0,20"
                      Keyboard="Numeric"
                      IsPassword="False"/>
@@ -32,20 +32,17 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-
-        <Button x:Name="Btn_LoginMobeyeAccount" 
-                    Clicked="LoginMobeye"
-                Style="{StaticResource buttonStyle}" 
-                Text="Login with account">
-            <Button.Background>
-                <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="1,0">
-                    <GradientStop Color="#99CC00"
-                          Offset="0.1"/>
-                    <GradientStop Color="#72ab72"
-                          Offset="1.0"/>
-                </LinearGradientBrush>
-            </Button.Background>
-        </Button>
+        
+        <Picker x:Name="Language_Select"
+                Title="Language" SelectedIndexChanged="ChangeLanguage">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>English</x:String>
+                    <x:String>Français</x:String>
+                    <x:String>Nederlands</x:String>
+                    <x:String>Deutsch</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
     </StackLayout>
 </ContentPage>

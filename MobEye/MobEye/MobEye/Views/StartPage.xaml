@@ -16,7 +16,7 @@
             <Button x:Name="Btn_LoginSMSCode" 
                     Clicked="LoginCode"
                 Style="{StaticResource buttonStyle}" 
-                Text="{x:Static resource:AppResources.LoginCodeButton}">
+                Text="Login">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0"
                              EndPoint="1,0">

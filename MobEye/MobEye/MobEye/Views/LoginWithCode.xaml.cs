@@ -12,6 +12,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MobEye.Services;
 using MobEye.Responses;
+using MobEye.Resources;
+using System.Globalization;
 
 namespace MobEye.Views
 {
@@ -25,7 +27,7 @@ namespace MobEye.Views
         public LoginWithCode(string message)
         {
             InitializeComponent();
-            Label_Message.Text = message;
+            //Label_Message.Text = message;
             registrationAndAuthorizationService = new RegistrationAndAuthorizationService();
         }
 
@@ -118,6 +120,34 @@ namespace MobEye.Views
         private void LoginMobeye(object sender, EventArgs e)
         {
             Navigation.PushAsync(new LoginWithMobeyeAccount());
+        }
+
+        public void ChangeLanguage(object sender, EventArgs args)
+        {
+            Picker languageSelect = (Picker)sender;
+
+            int language = languageSelect.SelectedIndex;
+
+            switch (language)
+            {
+                case 0:
+                    AppResources.Culture = new CultureInfo("en");
+                    Navigation.PushAsync(new StartPage());
+                    break;
+                case 1:
+                    AppResources.Culture = new CultureInfo("fr");
+                    Navigation.PushAsync(new StartPage());
+                    break;
+                case 2:
+                    AppResources.Culture = new CultureInfo("nl");
+                    Navigation.PushAsync(new StartPage());
+                    break;
+                case 3:
+                    AppResources.Culture = new CultureInfo("de");
+                    Navigation.PushAsync(new StartPage());
+                    break;
+
+            }
         }
     }
 }
