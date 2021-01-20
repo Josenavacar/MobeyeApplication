@@ -28,30 +28,14 @@
                 </Button.Background>
             </Button>
             
-            <!--DEBUG BUTTON DELETE BELOW-->
-
-            <!--<Button x:Name="Btn_DEBUG" 
-                    Clicked="DebugHome"
-                Style="{StaticResource buttonStyle}" 
-                Text="Go to MobEye's Portal">
-                <Button.Background>
-                    <LinearGradientBrush StartPoint="0,0"
-                             EndPoint="1,0">
-                        <GradientStop Color="#99CC00"
-                          Offset="0.1"/>
-                        <GradientStop Color="#72ab72"
-                          Offset="1.0"/>
-                    </LinearGradientBrush>
-                </Button.Background>
-            </Button>-->
-            
             <Picker x:Name="Language_Select"
                 Title="Language" SelectedIndexChanged="ChangeLanguage">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
-                        <x:String>English</x:String>
-                        <x:String>Français</x:String>
-                        <x:String>Nederlands</x:String>
+                            <x:String>English</x:String>
+                            <x:String>Français</x:String>
+                            <x:String>Nederlands</x:String>
+                            <x:String>Deutsch</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
