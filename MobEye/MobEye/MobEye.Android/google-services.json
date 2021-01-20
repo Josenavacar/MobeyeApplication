@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "441795943047",
+    "project_id": "mobeye-app-6983b",
+    "storage_bucket": "mobeye-app-6983b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441795943047:android:4fb4abfe2b4fe0aee53622",
+        "android_client_info": {
+          "package_name": "MobEye.Droid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441795943047-sf9ok26ttusg2gs0p7vkdmvg13tvroah.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBx0ld_APuQMmkcURObaUq_C7Dexaz4DN4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441795943047-sf9ok26ttusg2gs0p7vkdmvg13tvroah.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -18,9 +18,6 @@
           "MobEye.dll": {}
         },
         "resources": {
-          "de/MobEye.resources.dll": {
-            "locale": "de"
-          },
           "fr/MobEye.resources.dll": {
             "locale": "fr"
           },
