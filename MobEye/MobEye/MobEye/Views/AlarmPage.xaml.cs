@@ -12,6 +12,7 @@ using MobEye.Models;
 using MobEye.Controls;
 using MobEye.Services;
 using Xamarin.Essentials;
+using MobEye.Responses;
 
 namespace MobEye
 {
@@ -23,6 +24,11 @@ namespace MobEye
         private HttpClientHandler clientHandler;
         private ObservableCollection<AlarmMessage> alarmMessages;
         ConfirmAlarmService confirmAlarmService;
+        private const String url = "https://192.168.1.59:45457/api/messages/";
+        private HttpClient httpClient;
+        private HttpClientHandler clientHandler;
+        private ObservableCollection<AlarmMessage> alarmMessages;
+        AlarmService alarmService = new AlarmService();
 
         public AlarmPage()
         {
@@ -67,8 +73,10 @@ namespace MobEye
             httpClient = new HttpClient(clientHandler);
 
             var content = await httpClient.GetStringAsync(url);
-            var newalarmMessage = JsonConvert.DeserializeObject<List<AlarmMessage>>(content);
-            alarmMessages = new ObservableCollection<AlarmMessage>(newalarmMessage);
+            var newAlarmMessage = JsonConvert.DeserializeObject<List<AlarmMessage>>(content);
+
+            //var newAlarmMessage = alarmService.CheckForAlarms();
+            alarmMessages = new ObservableCollection<AlarmMessage>(newAlarmMessage);
             Message_List.ItemsSource = alarmMessages;
             base.OnAppearing();
         }
