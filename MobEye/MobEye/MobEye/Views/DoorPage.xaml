@@ -12,11 +12,11 @@
                HorizontalTextAlignment="Center"
                Padding="0,70,0,0"/>
 
-            <Button x:Name="Btn_Refresh" 
+            <!--<Button x:Name="Btn_Refresh" 
                 Style="{StaticResource buttonStyle}"  
                 Text="{x:Static resource:AppResources.Btn_Refresh}"
                 BackgroundColor="#99CC00">
-            </Button>
+            </Button>-->
         </StackLayout>
         
 
