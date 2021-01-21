@@ -28,7 +28,7 @@ namespace MobEye.Services
         }
 
         /// <summary>
-        /// Post method to register 
+        /// Post method to register device 
         /// </summary>
         /// <param name="phoneID"></param>
         /// <param name="code"></param>
@@ -59,8 +59,6 @@ namespace MobEye.Services
 
                     await SecureStorage.SetAsync("private_key", privateKey);
 
-                    //await this.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
-
                     return privateKey;
                 }
                 return null;
@@ -81,6 +79,7 @@ namespace MobEye.Services
         public async Task<String> Authorization(String phoneId, String privateKey)
         {
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/phoneauthorization"));
+            await SecureStorage.SetAsync("device", "");
 
             try
             {
@@ -88,50 +87,50 @@ namespace MobEye.Services
 
                 string json = JsonConvert.SerializeObject(authorizationRequest);
 
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
+                StringContent authContent = new StringContent(json, Encoding.UTF8, "application/json");
 
                 HttpResponseMessage response = null;
 
-                response = await client.PostAsync(uri, content);
+                response = await client.PostAsync(uri, authContent);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var c = response.Content;
+                    var responseContent = response.Content;
 
-                    var jsonString = await c.ReadAsStringAsync().ConfigureAwait(false);
+                    var jsonString = await responseContent.ReadAsStringAsync().ConfigureAwait(false);
 
                     List<Device> devices = new List<Device>();
 
                     JObject jObject = JObject.Parse(jsonString);
 
-                    String urole = (string)jObject["UserRole"];
+                    String responseUserRole = (string)jObject["UserRole"];
 
-                    await SecureStorage.SetAsync("role", urole);
+                    await SecureStorage.SetAsync("role", responseUserRole);
 
-                    String pk = (string)jObject["PrivateKey"];
+                    String responsePrivateKey = (string)jObject["PrivateKey"];
 
-                    Device dev = new Device();
+                    Device device = new Device();
 
                     if (jObject["Devices"].First["DeviceId"] != null)
                     {
                         
-                        dev.ID = (int)jObject["Devices"].First["DeviceId"];
+                        device.ID = (int)jObject["Devices"].First["DeviceId"];
 
-                        dev.DeviceName = (string)jObject["Devices"].First["DeviceName"];
+                        device.DeviceName = (string)jObject["Devices"].First["DeviceName"];
 
-                        dev.CommandText = (string)jObject["Devices"].First["CommandText"];
+                        device.CommandText = (string)jObject["Devices"].First["CommandText"];
 
                         if ((String)jObject["Devices"].First["Command"] == Command.DO1.ToString())
                         {
-                            dev.Command = Command.DO1;
+                            device.Command = Command.DO1;
                         }
 
-                        await SecureStorage.SetAsync("device", dev.ID.ToString());
-                        devices.Add(dev);
+                        await SecureStorage.SetAsync("device", device.ID.ToString());
+                        await SecureStorage.SetAsync("door_status", "Opened");
+                        devices.Add(device);
                     }
-
-                    AuthorizationResponse response1 = new AuthorizationResponse(urole, pk, devices);
-
+                   
+                    AuthorizationResponse response1 = new AuthorizationResponse(responseUserRole, responsePrivateKey, devices);
                     return response1.ToString();
                 }
 

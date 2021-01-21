@@ -1,16 +1,12 @@
 ﻿using MobEye.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using Xamarin.Essentials;
 using Newtonsoft.Json;
-using System.Net;
 
 namespace MobEye.Views
 {
@@ -48,7 +44,6 @@ namespace MobEye.Views
                 // send request to api and wait for response
                 var url = "https://192.168.1.59:45455/api/users/registration";
                 var jsonData = new StringContent(JsonConvert.SerializeObject("username" + Entry_Username.Text + "password" + Entry_Password.Text), Encoding.UTF8, "application/json");
-                //httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await SecureStorage.GetAsync("private_key"));
                 var response = await httpClient.PostAsync(url, jsonData);
 
                 // if response successful then save private ket locally
@@ -59,7 +54,6 @@ namespace MobEye.Views
                     await SecureStorage.SetAsync("private_key", result);
                     await DisplayAlert("Successful", result, "Close");
                     await Navigation.PushAsync(new AlarmPage());
-                    //await Navigation.PushAsync(new LoginWithCode("Set a code for the next login"));
                 }
             }
             catch (Exception ex)

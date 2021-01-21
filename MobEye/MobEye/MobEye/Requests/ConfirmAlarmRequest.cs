@@ -2,14 +2,20 @@
 
 namespace MobEye.Requests
 {
-    class AuthorizationRequest
-    { 
+    public class ConfirmAlarmRequest
+    {
         public String PhoneID { get; set; }
         public String PrivateKey { get; set; }
 
-        public AuthorizationRequest(String phoneId, String privateKey)
+        public int UniqueMessageID { get; set; }
+
+        public String Response { get; set; }
+
+        public ConfirmAlarmRequest(String phoneId, int uniqueMessageID, String response, String privateKey)
         {
             this.PhoneID = phoneId;
+            this.UniqueMessageID = uniqueMessageID;
+            this.Response = response;
             this.PrivateKey = privateKey;
         }
 

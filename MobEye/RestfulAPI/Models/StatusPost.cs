@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace RestfulAPI.Models
 {
-    //To be designed
     public class StatusPost
     {
         public User User { get; set; }

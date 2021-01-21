@@ -22,7 +22,22 @@
                Text="{x:Static resource:AppResources.AlarmInfoMessage}" 
                HorizontalTextAlignment="Center"
                Padding="0,5,0,50"/>
-            
+
+            <Button x:Name="Btn_OpenAlarm" 
+                Style="{StaticResource buttonStyle}"  
+                Text="Go To Alarms"
+                Clicked="OpenAlarmPage">
+                <Button.Background>
+                    <LinearGradientBrush StartPoint="0,0"
+                             EndPoint="1,0">
+                        <GradientStop Color="#99CC00"
+                          Offset="0.1"/>
+                        <GradientStop Color="#72ab72"
+                          Offset="1.0"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+
             <Button x:Name="Btn_Portal" 
                 Style="{StaticResource buttonStyle}"  
                 Text="{x:Static resource:AppResources.PortalButton}"

@@ -17,20 +17,33 @@ namespace RestfulAPI.Controllers
     {
         private readonly AlarmContext alarmContext;
 
+        /// <summary>
+        /// Method to reference database context (temporary save data)
+        /// </summary>
+        /// <param name="alarmContext"></param>
         public AlarmController(AlarmContext alarmContext)
         {
             this.alarmContext = alarmContext;
         }
 
-        //API-send message get Mobeye input
-        //https://localhost:44349/api/messages/
+        /// <summary>
+        /// //https://localhost:44349/api/messages/
+        /// Method to return alarms in a list
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public List<Alarm> GetAlarms()
         {
             return alarmContext.Alarms.Include(alarm => alarm.Recipients).ToList();
         }
 
-        //https://localhost:44349/api/messages/
+        /// <summary>
+        /// //https://localhost:44349/api/messages/
+        /// Post request for alarms
+        /// Method to "create" and add alarms
+        /// </summary>
+        /// <param name="alarm"></param>
+        /// <returns></returns>
         [HttpPost]
         public Alarm PostAlarm(AlarmPostModel alarm)
         {
@@ -39,16 +52,14 @@ namespace RestfulAPI.Controllers
             return alarm;
         }
 
+        /// <summary>
+        /// Method to get status
+        /// </summary>
+        /// <param name="items"></param>
+        /// <returns></returns>
         [HttpPost("status")]
         public JObject PostStatus(JObject items)
         {
-            //string answer = $"'Phone IMEI': '{status.User.DeviceImei}', 'private key': 'temp', 'Message ID': '{status.Alarm.MessageID}', 'Status': '{status.Alarm.Status}'";
-
-            //string answer = $"'Phone IMEI': '{sender.DeviceImei}'";
-            //string answer = $"'Phone IMEI': '{alarm.MessageID}'";
-
-            //JObject jsonAnswer = JObject.Parse(answer);
-
             return (JObject)items;
         }
     }
