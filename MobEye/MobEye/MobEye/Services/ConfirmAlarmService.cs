@@ -1,12 +1,10 @@
 ﻿using MobEye.Requests;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 
 namespace MobEye.Services
 {
@@ -21,6 +19,15 @@ namespace MobEye.Services
             client = new HttpClient(clientHandler);
         }
 
+        /// <summary>
+        /// Method to send post request to mobeye
+        /// POST request to confirm an alarm and remove alarm after confirmed
+        /// </summary>
+        /// <param name="phoneID"></param>
+        /// <param name="messageID"></param>
+        /// <param name="responseText"></param>
+        /// <param name="privateKey"></param>
+        /// <returns></returns>
         public async Task<String> ConfirmAlarm(String phoneID, int messageID, String responseText, String privateKey)
         {
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/messagestatus"));
@@ -45,10 +52,6 @@ namespace MobEye.Services
 
                     String postResponse = JsonConvert.DeserializeObject<String>(jsonString);
 
-                    //await SecureStorage.SetAsync("private_key", postResponse);
-
-                    //await this.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
-                    Console.WriteLine(postResponse);
                     return postResponse;
                 }
                 return null;

@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace RestfulAPI.Models
 {
-    //To be designed
     public enum Status
     {
         confirmed,

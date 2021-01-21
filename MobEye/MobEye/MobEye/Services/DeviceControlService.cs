@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MobEye.Requests;
-using MobEye.Responses;
 using Xamarin.Essentials;
-using Newtonsoft.Json.Linq;
-using MobEye.Models;
 
 namespace MobEye.Services
 {
@@ -28,19 +24,18 @@ namespace MobEye.Services
         }
 
         /// <summary>
-        /// Post method to register 
+        /// Method to send a post request to api to check if door can be opened
         /// </summary>
         /// <param name="phoneID"></param>
         /// <param name="code"></param>
         /// <returns></returns>
-        public async Task<String> SendCommand(String phoneID, String deviceId, String privateKey, String command )
+        public async Task<String> OpenDoor(String phoneID, String deviceId, String privateKey, String command )
         {
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/control"));
             
-
             try
             {
-                SendCommandRequest sendCommandRequest = new SendCommandRequest(phoneID, deviceId, privateKey, command);
+                OpenDoorRequest sendCommandRequest = new OpenDoorRequest(phoneID, deviceId, privateKey, command);
 
                 string json = JsonConvert.SerializeObject(sendCommandRequest);
 
@@ -61,11 +56,8 @@ namespace MobEye.Services
                         
                         await SecureStorage.SetAsync("door_status", "Received");
                     }
-
                     
                     return jsonString;
-
-
                 }
                 return null;
             }

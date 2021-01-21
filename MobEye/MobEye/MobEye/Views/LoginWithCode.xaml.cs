@@ -1,17 +1,10 @@
 ﻿using MobEye.Models;
-using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MobEye.Services;
-using MobEye.Responses;
 using MobEye.Resources;
 using System.Globalization;
 
@@ -22,12 +15,11 @@ namespace MobEye.Views
     {
         private HttpClient httpClient;
         private HttpClientHandler clientHandler;
-        RegistrationAndAuthorizationService registrationAndAuthorizationService;
+        private RegistrationAndAuthorizationService registrationAndAuthorizationService;
 
-        public LoginWithCode(string message)
+        public LoginWithCode()
         {
             InitializeComponent();
-            //Label_Message.Text = message;
             registrationAndAuthorizationService = new RegistrationAndAuthorizationService();
         }
 
@@ -63,6 +55,7 @@ namespace MobEye.Views
                 Application.Current.Properties["phoneCode"] = code;
                 Application.Current.Properties["phoneId"] = "bbbb2222";
                 await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+
                 if (await SecureStorage.GetAsync("role") == "Account")
                 {
                     await Navigation.PushAsync(new HomePage());
@@ -75,6 +68,7 @@ namespace MobEye.Views
                 Application.Current.Properties["phoneCode"] = code;
                 Application.Current.Properties["phoneId"] = "cccc3333";
                 await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+
                 if (await SecureStorage.GetAsync("role") == "Standard")
                 {
                     await Navigation.PushAsync(new AlarmPage());
@@ -87,6 +81,7 @@ namespace MobEye.Views
                 Application.Current.Properties["phoneCode"] = code;
                 Application.Current.Properties["phoneId"] = "dddd4444";
                 await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+
                 if (await SecureStorage.GetAsync("role") == "Standard")
                 {
                     await Navigation.PushAsync(new DoorPage());
@@ -99,6 +94,7 @@ namespace MobEye.Views
                 Application.Current.Properties["phoneCode"] = code;
                 Application.Current.Properties["phoneId"] = "eeee5555";
                 await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
+
                 if (await SecureStorage.GetAsync("role") == "Standard")
                 {
                     await Navigation.PushAsync(new AlarmPage());
@@ -131,6 +127,11 @@ namespace MobEye.Views
             Navigation.PushAsync(new LoginWithMobeyeAccount());
         }
 
+        /// <summary>
+        /// Method to change language
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         public void ChangeLanguage(object sender, EventArgs args)
         {
             Picker languageSelect = (Picker)sender;
@@ -141,19 +142,19 @@ namespace MobEye.Views
             {
                 case 0:
                     AppResources.Culture = new CultureInfo("en");
-                    Navigation.PushAsync(new StartPage());
+                    Navigation.PushAsync(new LoginWithCode());
                     break;
                 case 1:
                     AppResources.Culture = new CultureInfo("fr");
-                    Navigation.PushAsync(new StartPage());
+                    Navigation.PushAsync(new LoginWithCode());
                     break;
                 case 2:
                     AppResources.Culture = new CultureInfo("nl");
-                    Navigation.PushAsync(new StartPage());
+                    Navigation.PushAsync(new LoginWithCode());
                     break;
                 case 3:
                     AppResources.Culture = new CultureInfo("de");
-                    Navigation.PushAsync(new StartPage());
+                    Navigation.PushAsync(new LoginWithCode());
                     break;
 
             }

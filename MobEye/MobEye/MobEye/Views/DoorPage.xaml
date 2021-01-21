@@ -11,14 +11,8 @@
                Text="{x:Static resource:AppResources.RemoteMessage}" 
                HorizontalTextAlignment="Center"
                Padding="0,70,0,0"/>
-
-            <!--<Button x:Name="Btn_Refresh" 
-                Style="{StaticResource buttonStyle}"  
-                Text="{x:Static resource:AppResources.Btn_Refresh}"
-                BackgroundColor="#99CC00">
-            </Button>-->
         </StackLayout>
-        
+
 
         <Frame BorderColor="#d7e0b6"
        Padding="20"
@@ -30,9 +24,9 @@
                         HorizontalTextAlignment="Center">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>1111</x:String>
+                            <!--<x:String>1111</x:String>
                             <x:String>2222</x:String>
-                            <x:String>3333</x:String>
+                            <x:String>3333</x:String>-->
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
@@ -42,8 +36,6 @@
                HorizontalTextAlignment="Center"/>
             </StackLayout>
         </Frame>
-
-     
 
         <Button x:Name="Btn_Open_Door" 
                 Style="{StaticResource buttonStyle}"

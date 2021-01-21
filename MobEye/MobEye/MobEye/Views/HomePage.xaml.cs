@@ -1,10 +1,5 @@
-﻿using MobEye.Responses;
-using MobEye.Services;
+﻿using MobEye.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -23,6 +18,9 @@ namespace MobEye.Views
             //alarmService.CheckForAlarms();
         }
 
+        /// <summary>
+        /// When app loaded
+        /// </summary>
         protected override void OnAppearing() 
         {
             //Lbl_Device_Info.Text = "";
@@ -37,10 +35,14 @@ namespace MobEye.Views
         /// <param name="e"></param>
         private void OpenPortal(object sender, EventArgs e)
         {
-            //'Device.OpenUri(Uri)' is obsolete: 'OpenUri is obsolete as of version 4.3.0. Use Launcher.OpenAsync (or CanOpenAsync, or TryOpenAsync) from Xamarin.Essentials instead.'
-            Device.OpenUri(new Uri("https://www.mymobeye.eu/"));
+            Launcher.OpenAsync(new Uri("https://www.mymobeye.eu/"));
         }
 
+        /// <summary>
+        /// Method to open alarm page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OpenAlarmPage(object sender, EventArgs e)
         {
             Navigation.PushAsync(new AlarmPage());

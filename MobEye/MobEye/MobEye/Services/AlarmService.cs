@@ -1,12 +1,8 @@
-﻿using MobEye.Models;
-using MobEye.Responses;
+﻿using MobEye.Responses;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MobEye.Services
@@ -23,6 +19,10 @@ namespace MobEye.Services
             this.CheckForAlarmsAsync();
         }
 
+        /// <summary>
+        /// Async method to check if there is new alarms -- test purposes
+        /// </summary>
+        /// <returns></returns>
         public async Task<String> CheckForAlarmsAsync()
         {
             Uri uri = new Uri(String.Format("https://192.168.1.59:45455/api/messages/"));

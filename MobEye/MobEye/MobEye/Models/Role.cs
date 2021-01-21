@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MobEye.Models
+﻿namespace MobEye.Models
 {
     /// <summary>
     /// Enum for user roles

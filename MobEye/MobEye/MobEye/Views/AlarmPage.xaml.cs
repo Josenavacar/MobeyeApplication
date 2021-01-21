@@ -1,34 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using MobEye.Models;
-using MobEye.Controls;
 using MobEye.Services;
 using Xamarin.Essentials;
-using MobEye.Responses;
 
 namespace MobEye
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AlarmPage : ContentPage
     {
-        private const String url = "https://192.168.1.59:45458/api/messages/";
+        private const String url = "https://192.168.1.59:45459/api/messages/";
         private HttpClient httpClient;
         private HttpClientHandler clientHandler;
         private ObservableCollection<AlarmMessage> alarmMessages;
-        ConfirmAlarmService confirmAlarmService;
-        private const String url = "https://192.168.1.59:45457/api/messages/";
-        private HttpClient httpClient;
-        private HttpClientHandler clientHandler;
-        private ObservableCollection<AlarmMessage> alarmMessages;
-        AlarmService alarmService = new AlarmService();
+        private ConfirmAlarmService confirmAlarmService;
 
         public AlarmPage()
         {
@@ -75,7 +65,6 @@ namespace MobEye
             var content = await httpClient.GetStringAsync(url);
             var newAlarmMessage = JsonConvert.DeserializeObject<List<AlarmMessage>>(content);
 
-            //var newAlarmMessage = alarmService.CheckForAlarms();
             alarmMessages = new ObservableCollection<AlarmMessage>(newAlarmMessage);
             Message_List.ItemsSource = alarmMessages;
             base.OnAppearing();

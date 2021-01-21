@@ -28,7 +28,7 @@ namespace MobEye.Services
         }
 
         /// <summary>
-        /// Post method to register 
+        /// Post method to register device 
         /// </summary>
         /// <param name="phoneID"></param>
         /// <param name="code"></param>
@@ -81,7 +81,6 @@ namespace MobEye.Services
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/phoneauthorization"));
             await SecureStorage.SetAsync("device", "");
 
-
             try
             {
                 AuthorizationRequest authorizationRequest = new AuthorizationRequest(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
@@ -126,14 +125,12 @@ namespace MobEye.Services
                             device.Command = Command.DO1;
                         }
 
-                        await SecureStorage.SetAsync("device", dev.ID.ToString());
+                        await SecureStorage.SetAsync("device", device.ID.ToString());
                         await SecureStorage.SetAsync("door_status", "Opened");
-                        devices.Add(dev);
+                        devices.Add(device);
                     }
                    
-
                     AuthorizationResponse response1 = new AuthorizationResponse(responseUserRole, responsePrivateKey, devices);
-
                     return response1.ToString();
                 }
 

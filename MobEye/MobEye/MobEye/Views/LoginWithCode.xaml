@@ -10,8 +10,6 @@
         <Image Source="mobeyelogo.png"
                HeightRequest="170"
                WidthRequest="170"/>
-
-        <!--<Label x:Name="Label_Message"/>-->
         
         <local:CustomEntry x:Name="Entry_Code" 
                      Placeholder="Enter your code here..."
