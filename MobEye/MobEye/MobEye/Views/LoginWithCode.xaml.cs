@@ -46,6 +46,7 @@ namespace MobEye.Views
                 var register = registrationAndAuthorizationService.Register(PhoneID.aaaa1111.ToString(), code);
                 await SecureStorage.SetAsync("phone_id", PhoneID.aaaa1111.ToString());
                 Application.Current.Properties["phoneCode"] = code;
+                Application.Current.Properties["phoneId"] = "aaaa1111";
                 await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
                 
                 if(await SecureStorage.GetAsync("role") == "Account")
@@ -58,6 +59,7 @@ namespace MobEye.Views
                 var register = registrationAndAuthorizationService.Register(PhoneID.bbbb2222.ToString(), code);
                 await SecureStorage.SetAsync("phone_id", PhoneID.bbbb2222.ToString());
                 Application.Current.Properties["phoneCode"] = code;
+                Application.Current.Properties["phoneId"] = "bbbb2222";
                 await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
                 if (await SecureStorage.GetAsync("role") == "Account")
                 {
@@ -69,6 +71,7 @@ namespace MobEye.Views
                 var register = registrationAndAuthorizationService.Register(PhoneID.cccc3333.ToString(), code);
                 await SecureStorage.SetAsync("phone_id", PhoneID.cccc3333.ToString());
                 Application.Current.Properties["phoneCode"] = code;
+                Application.Current.Properties["phoneId"] = "cccc3333";
                 await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
                 if (await SecureStorage.GetAsync("role") == "Standard")
                 {
@@ -80,6 +83,7 @@ namespace MobEye.Views
                 var register = registrationAndAuthorizationService.Register(PhoneID.dddd4444.ToString(), code);
                 await SecureStorage.SetAsync("phone_id", PhoneID.dddd4444.ToString());
                 Application.Current.Properties["phoneCode"] = code;
+                Application.Current.Properties["phoneId"] = "dddd4444";
                 await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
                 if (await SecureStorage.GetAsync("role") == "Standard")
                 {
@@ -91,6 +95,7 @@ namespace MobEye.Views
                 var register = registrationAndAuthorizationService.Register(PhoneID.eeee5555.ToString(), code);
                 await SecureStorage.SetAsync("phone_id", PhoneID.eeee5555.ToString());
                 Application.Current.Properties["phoneCode"] = code;
+                Application.Current.Properties["phoneId"] = "eeee5555";
                 await registrationAndAuthorizationService.Authorization(await SecureStorage.GetAsync("phone_id"), await SecureStorage.GetAsync("private_key"));
                 if (await SecureStorage.GetAsync("role") == "Standard")
                 {

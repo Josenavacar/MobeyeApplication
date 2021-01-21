@@ -81,6 +81,8 @@ namespace MobEye.Services
         public async Task<String> Authorization(String phoneId, String privateKey)
         {
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/phoneauthorization"));
+            await SecureStorage.SetAsync("device", "");
+
 
             try
             {
@@ -127,8 +129,10 @@ namespace MobEye.Services
                         }
 
                         await SecureStorage.SetAsync("device", dev.ID.ToString());
+                        await SecureStorage.SetAsync("door_status", "Opened");
                         devices.Add(dev);
                     }
+                   
 
                     AuthorizationResponse response1 = new AuthorizationResponse(urole, pk, devices);
 

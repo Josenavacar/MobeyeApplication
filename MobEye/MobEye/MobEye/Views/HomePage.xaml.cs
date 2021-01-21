@@ -15,6 +15,7 @@ namespace MobEye.Views
         public HomePage()
         {
             InitializeComponent();
+
         }
 
         /// <summary>
