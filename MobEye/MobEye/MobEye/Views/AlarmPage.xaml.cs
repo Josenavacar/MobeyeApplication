@@ -10,6 +10,8 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using MobEye.Models;
 using MobEye.Controls;
+using MobEye.Services;
+using Xamarin.Essentials;
 
 namespace MobEye
 {
@@ -20,10 +22,12 @@ namespace MobEye
         private HttpClient httpClient;
         private HttpClientHandler clientHandler;
         private ObservableCollection<AlarmMessage> alarmMessages;
+        ConfirmAlarmService confirmAlarmService;
 
         public AlarmPage()
         {
             InitializeComponent();
+            confirmAlarmService = new ConfirmAlarmService();
         }
 
         /// <summary>
@@ -31,8 +35,15 @@ namespace MobEye
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void ConfirmAlarm(object sender, EventArgs e)
+        public async void ConfirmAlarm(object sender, EventArgs e)
         {
+            int messageID = 1;
+            String phoneID = await SecureStorage.GetAsync("phone_id");
+            String privateKey = await SecureStorage.GetAsync("private_key");
+            String responseStatus = "Confirmed";
+            String result = await confirmAlarmService.ConfirmAlarm(phoneID, messageID, responseStatus, privateKey);
+            await DisplayAlert("Success", result, "Close");
+            alarmMessages.Clear();
             (sender as Button).Text = "Alarm confirmed";
         }
 

@@ -97,6 +97,10 @@ namespace MobEye.Views
                     await Navigation.PushAsync(new AlarmPage());
                 }
             }
+            else
+            {
+                await DisplayAlert("Error", "Please enter the correct code", "Close");
+            }
         }
 
         /// <summary>
