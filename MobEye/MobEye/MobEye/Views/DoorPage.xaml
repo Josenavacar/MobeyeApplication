@@ -39,7 +39,6 @@
 
                 <Label x:Name="Lbl_Status" 
                FontSize="20"
-               Text="{x:Static resource:AppResources.StatusMessage}" 
                HorizontalTextAlignment="Center"/>
             </StackLayout>
         </Frame>

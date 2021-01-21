@@ -129,6 +129,7 @@ namespace MobEye.Services
                         }
 
                         await SecureStorage.SetAsync("device", dev.ID.ToString());
+                        await SecureStorage.SetAsync("door_status", "Opened");
                         devices.Add(dev);
                     }
                    

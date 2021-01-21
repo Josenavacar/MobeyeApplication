@@ -6,9 +6,9 @@ namespace MobEye.Requests
 {
     class SendCommandRequest
     {
-       public String PhoneId { get; set; }
-       public String DeviceId { get; set; }
-       public String PrivateKey { get; set; }
+        public String PhoneId { get; set; }
+        public String DeviceId { get; set; }
+        public String PrivateKey { get; set; }
         public String Command { get; set; }
 
         public SendCommandRequest(String PhoneId,String DeviceId, String PrivateKey, String Command)
@@ -18,10 +18,5 @@ namespace MobEye.Requests
             this.PrivateKey = PrivateKey;
             this.Command = Command;
         }
-    //    {
-//"PhoneId": "bbbb2222",
-//"DeviceId": "8166",
-//"PrivateKey": "pkbbbb2222",
-//"Command":"DO1"
     }
 }

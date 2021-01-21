@@ -36,6 +36,7 @@ namespace MobEye.Services
         public async Task<String> SendCommand(String phoneID, String deviceId, String privateKey, String command )
         {
             Uri uri = new Uri(String.Format("https://www.api.mymobeye.com/api/control"));
+            
 
             try
             {
@@ -55,7 +56,16 @@ namespace MobEye.Services
 
                     string jsonString = await responseContent.ReadAsStringAsync().ConfigureAwait(false);
 
+                    if(jsonString == "Received")
+                    {
+                        
+                        await SecureStorage.SetAsync("door_status", "Received");
+                    }
+
+                    
                     return jsonString;
+
+
                 }
                 return null;
             }

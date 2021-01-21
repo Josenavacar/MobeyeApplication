@@ -28,6 +28,12 @@ namespace MobEye.Views
 
         protected override async void OnAppearing()
         {
+
+            if (await SecureStorage.GetAsync("door_status") == "Opened")
+            {
+                Lbl_Status.Text = "OPENED";
+            }
+
             Door_Pick.ItemsSource = null;
             List<String> devices = new List<string>();
             
@@ -38,6 +44,7 @@ namespace MobEye.Views
                 Btn_Open_Door.IsEnabled = false;
             }
             //Door_Pick.Items.Add("asd");
+
         }
         /// <summary>
         /// Async method to open a door
@@ -47,48 +54,21 @@ namespace MobEye.Views
         /// <param name="e"></param>
         public async void OpenDoor (object sender, EventArgs e)
         {
-
-            // set up the http objects
-            /*clientHandler = new HttpClientHandler();
-            clientHandler.ServerCertificateCustomValidationCallback = (s, cert, chain, sslPolicyErrors) => { return true; };
-            httpClient = new HttpClient(clientHandler);
-
-            try
-            {
-                // send request to api and wait for response
-                var url = "https://192.168.1.59:45455/api/users/door";
-                var jsonData = new StringContent(JsonConvert.SerializeObject(Door_Pick.SelectedItem.ToString()), Encoding.UTF8, "application/json");
-                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", await SecureStorage.GetAsync("private_key"));
-                var response = await httpClient.PostAsync(url, jsonData);
-
-                // if response successful then save private ket locally
-                // then show a popup (display alert) with result before goin to homepage
-                if (response.IsSuccessStatusCode)
-                {
-                    var result = await response.Content.ReadAsStringAsync();
-                    //await SecureStorage.SetAsync("private_key", result);
-                    await DisplayAlert("Successful", result, "Close");
-                    //await Navigation.PushAsync(new AlarmPage());
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            */
-            DeviceControlService deviceControlService= new DeviceControlService();
+            //SecureStorage.Remove("door_status");
+            DeviceControlService deviceControlService = new DeviceControlService();
             String phoneId = Application.Current.Properties["phoneId"].ToString();
-            Console.WriteLine(phoneId);
             String device = Door_Pick.SelectedItem.ToString();
-            Console.WriteLine(device);
             String privateKey = await SecureStorage.GetAsync("private_key");
-            Console.WriteLine(privateKey);
             String command = Models.Command.DO1.ToString();
-
-
             String result = await deviceControlService.SendCommand(phoneId, device, privateKey, command);
+            Console.WriteLine(result);
+            if (result.Equals("Received"))
+            {
+                Lbl_Status.Text = "CLOSED";
+            }
 
             await DisplayAlert("Door Opened", result, "Ok");
+            Lbl_Status.Text = "CLOSED";
         }   
 
     }
