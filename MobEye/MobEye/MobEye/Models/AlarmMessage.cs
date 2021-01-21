@@ -56,5 +56,11 @@ namespace MobEye.Models
         public AlarmMessage()
         {
         }
+
+
+        public override string ToString()
+        {
+            return "Message ID: " + this.MessageID + " Device Name: " + this.DeviceName + " Location: " + this.Location + " Alarm Text: " + this.AlarmText + " Reset: " + this.SetReset + " Priority: " + this.Priority + " Time: " + this.DateTime + " Recipients: " + this.Recipients + " Escalation: " + this.Escalation + " Value: " + this.Value + " Status: " + this.Status;
+        }
     }
 }

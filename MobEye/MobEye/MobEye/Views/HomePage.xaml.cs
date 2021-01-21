@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MobEye.Responses;
+using MobEye.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,15 +14,18 @@ namespace MobEye.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
+        AlarmService alarmService = new AlarmService();
+
         public HomePage()
         {
             InitializeComponent();
+            //alarmService.CheckForAlarms();
         }
 
         protected override void OnAppearing() 
         {
-
-            DisplayAlert("Successful", "lll", "Close");
+            //Lbl_Device_Info.Text = "";
+            //Lbl_Alarm_Info.Text = "";
         }
 
 
