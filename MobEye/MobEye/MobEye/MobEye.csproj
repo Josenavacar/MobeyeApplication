@@ -34,6 +34,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\AppResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\LoginPageWithCredentialsWithCredentials.xaml.cs">
       <DependentUpon>LoginPageWithCredentialsWithCredentials.xaml</DependentUpon>
     </Compile>

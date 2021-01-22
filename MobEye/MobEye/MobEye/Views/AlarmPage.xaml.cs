@@ -14,7 +14,7 @@ namespace MobEye
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AlarmPage : ContentPage
     {
-        private const String url = "https://192.168.1.59:45459/api/messages/";
+        private const String url = "https://192.168.1.59:45458/api/messages/";
         private HttpClient httpClient;
         private HttpClientHandler clientHandler;
         private ObservableCollection<AlarmMessage> alarmMessages;
@@ -48,8 +48,10 @@ namespace MobEye
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void SkipAlarm(object sender, EventArgs e)
+        public async void SkipAlarm(object sender, EventArgs e)
         {
+            await DisplayAlert("Success", "Alarm will be sent to the next user", "Close");
+            alarmMessages.Clear();
             (sender as Button).Text = "Alarm skipped";
         }
 

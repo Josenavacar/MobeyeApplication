@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using WindowsAzure.Messaging.NotificationHubs;
+using Firebase.Iid;
 
 namespace MobEye.Droid
 {
@@ -26,8 +27,9 @@ namespace MobEye.Droid
             NotificationHub.SetListener(new AzureListener());
 
             // Start the SDK
-            NotificationHub.Start(this.Application, Constants.NotificationHubName, Constants.ListenConnectionString);
 
+            NotificationHub.Start(this.Application, Constants.NotificationHubName, Constants.ListenConnectionString);
+            NotificationHub.AddTag("bob");
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());

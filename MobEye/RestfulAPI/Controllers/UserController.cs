@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.NotificationHubs;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using RestfulAPI.Database;
 using RestfulAPI.Models;
@@ -14,10 +17,12 @@ namespace RestfulAPI.Controllers
     {
         // Context is used here to mock a database
         private readonly UserContext userContext;
+        private readonly NotificationHubClient notifications;
 
         public UserController(UserContext userContext)
         {
             this.userContext = userContext;
+            this.notifications = new Notifications(userContext).Hub;
         }
 
 
@@ -58,10 +63,12 @@ namespace RestfulAPI.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
         [HttpPost]
-        public User PostUser(User user)
+        public async Task<User> PostUser(User user)
         {
+            var newRegistrationId = await notifications.CreateRegistrationIdAsync();
+            user.PrivateKey = newRegistrationId;
             userContext.Users.Add(user);
-            userContext.SaveChangesAsync();
+            userContext.SaveChanges();
             return user;
         }
 
@@ -83,7 +90,6 @@ namespace RestfulAPI.Controllers
             {
                 privateKey = String.Concat(privateKey, random.Next(10).ToString());
             }
-
             //return (JValue)privateKey;
             return (JValue)"success";
         }

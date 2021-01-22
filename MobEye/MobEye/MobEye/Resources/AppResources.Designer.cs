@@ -70,6 +70,15 @@ namespace MobEye.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Go To Alarms.
+        /// </summary>
+        internal static string AlarmsButton {
+            get {
+                return ResourceManager.GetString("AlarmsButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Active Alarm.
         /// </summary>
         internal static string AlarmTitle {
