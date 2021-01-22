@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,10 @@ namespace RestfulAPI.Controllers
     public class AlarmController : ControllerBase
     {
         private readonly AlarmContext alarmContext;
+        private readonly Notifications notifications;
+        // Context is used here to mock a database
+        private readonly UserContext userContext;
+        public AlarmController(AlarmContext alarmContext, UserContext userContext)
 
         /// <summary>
         /// Method to reference database context (temporary save data)
@@ -24,6 +29,8 @@ namespace RestfulAPI.Controllers
         public AlarmController(AlarmContext alarmContext)
         {
             this.alarmContext = alarmContext;
+            this.userContext = userContext;
+            this.notifications = new Notifications(userContext);
         }
 
         /// <summary>
@@ -45,11 +52,14 @@ namespace RestfulAPI.Controllers
         /// <param name="alarm"></param>
         /// <returns></returns>
         [HttpPost]
-        public Alarm PostAlarm(AlarmPostModel alarm)
+        public async Task<HttpResponseMessage> PostAlarm(AlarmPostModel alarm)
         {
             alarmContext.Alarms.Add(alarm);
             alarmContext.SaveChanges();
-            return alarm;
+            var result = await this.notifications.sendToAll();
+            //var result = await this.notifications.sendAlarm(alarm);
+            Console.WriteLine("result is " + result.ToString());
+            return new HttpResponseMessage(result);
         }
 
         /// <summary>
