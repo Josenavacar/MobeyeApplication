@@ -120,6 +120,9 @@
   <data name="AlarmInfoMessage" xml:space="preserve">
     <value>U Ontvangt Een Alarm Als Er Een Probleem Is</value>
   </data>
+  <data name="AlarmsButton" xml:space="preserve">
+    <value>Alarmen</value>
+  </data>
   <data name="AlarmTitle" xml:space="preserve">
     <value>Alarm Actief</value>
   </data>

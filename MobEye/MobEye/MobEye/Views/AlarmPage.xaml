@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:MobEye.Controls;assembly=MobEye"
              xmlns:resource="clr-namespace:MobEye.Resources"
              x:Class="MobEye.AlarmPage"
-             Title="Active alarm">
+             Title="{x:Static resource:AppResources.AlarmTitle}">
 
     <Frame BorderColor="#d7e0b6"
        Padding="10"
