@@ -90,7 +90,6 @@
     <Compile Include="Constants.cs" />
     <Compile Include="CustomEntryRendererAndroid.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="RegisterClient.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

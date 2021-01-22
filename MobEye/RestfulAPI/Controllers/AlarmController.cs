@@ -20,7 +20,6 @@ namespace RestfulAPI.Controllers
         private readonly Notifications notifications;
         // Context is used here to mock a database
         private readonly UserContext userContext;
-        public AlarmController(AlarmContext alarmContext, UserContext userContext)
 
         /// <summary>
         /// Method to reference database context (temporary save data)
