@@ -18,11 +18,13 @@ namespace RestfulAPI.Controllers
     {
         private readonly AlarmContext alarmContext;
         private readonly Notifications notifications;
-
-        public AlarmController(AlarmContext alarmContext)
+        // Context is used here to mock a database
+        private readonly UserContext userContext;
+        public AlarmController(AlarmContext alarmContext, UserContext userContext)
         {
             this.alarmContext = alarmContext;
-            this.notifications = new Notifications();
+            this.userContext = userContext;
+            this.notifications = new Notifications(userContext);
         }
 
         //API-send message get Mobeye input
@@ -40,6 +42,7 @@ namespace RestfulAPI.Controllers
             alarmContext.Alarms.Add(alarm);
             alarmContext.SaveChanges();
             var result = await this.notifications.sendToAll();
+            //var result = await this.notifications.sendAlarm(alarm);
             Console.WriteLine("result is " + result.ToString());
             return new HttpResponseMessage(result);
         }
