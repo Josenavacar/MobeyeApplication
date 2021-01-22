@@ -25,7 +25,7 @@
 
             <Button x:Name="Btn_OpenAlarm" 
                 Style="{StaticResource buttonStyle}"  
-                Text="Go To Alarms"
+                Text="{x:Static resource:AppResources.AlarmsButton}"
                 Clicked="OpenAlarmPage">
                 <Button.Background>
                     <LinearGradientBrush StartPoint="0,0"
